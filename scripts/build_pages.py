@@ -5,7 +5,6 @@ ROOT = sys.argv[1]
 BASE = "https://123rahmat.github.io/NX/"
 PHONE = "+92 341 2010948"
 WA = "https://wa.me/923412010948?text=" + "Hi%20Nexwire%2C%20I%27d%20like%20to%20discuss%20a%20project."
-FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
 
 P = {
  "fingerprint": ("Smart attendance system", "2025", "Fingerprint attendance on ESP32. Admins enrol and remove people from a mobile app, each scan is time-stamped and sent to the server over HTTP.", ["ESP32", "Fingerprint sensor", "HTTP", "Mobile app"]),
@@ -80,7 +79,10 @@ PAGES = [
           ("Can I get a dashboard without a mobile app?", "Yes. A web dashboard works on phones and computers without installing anything.")]},
 ]
 
-CSS = """:root{--bg:#0B1426;--card:#111d35;--line:#1f2d4d;--text:#E6ECF5;--muted:#9fb0cc;--accent:#5B8DEF;--btn:#1D5FD6}
+CSS = """@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/plex-sans-var.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/plex-mono-400.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/plex-mono-500.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+:root{--bg:#0B1426;--card:#111d35;--line:#1f2d4d;--text:#E6ECF5;--muted:#9fb0cc;--accent:#5B8DEF;--btn:#1D5FD6}
 @media (prefers-color-scheme:light){:root{--bg:#f4f5f7;--card:#fff;--line:#dde3ec;--text:#0f1b2e;--muted:#4a5a74;--accent:#1D5FD6}}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 "IBM Plex Sans",system-ui,sans-serif}
 a{color:var(--accent)}.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
@@ -96,9 +98,9 @@ h1{font-size:clamp(30px,5vw,46px);line-height:1.15;margin:12px 0 16px;font-weigh
 details{border-bottom:1px solid var(--line);padding:14px 0}summary{cursor:pointer;font-weight:500}details p{color:var(--muted);margin:8px 0 0}
 .cta{margin:56px 0;padding:28px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
 .cta p{margin:0;font-size:18px;font-weight:500}.btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600;background:var(--btn);color:#fff}.btn.wa{background:#25D366}
+.btn{display:inline-block;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600;background:var(--btn);color:#fff}.btn.wa{background:#0F7A43}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}footer nav{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:10px}footer a{color:var(--muted)}
-.wa-fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:99;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.28)}
+.wa-fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:99;width:56px;height:56px;border-radius:50%;background:#0F7A43;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.28)}
 .wa-fab:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 """
 
@@ -121,7 +123,7 @@ def shell(slug, title, desc, body, schemas):
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
@@ -132,8 +134,7 @@ def shell(slug, title, desc, body, schemas):
 <meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}og-image.png">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231D5FD6'/%3E%3Cpath d='M9 24V8l14 16V8' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+<link rel="preload" href="../fonts/plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../pages.css">
 {"".join(ld(s) for s in schemas)}
 </head>
