@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://123rahmat.github.io/NX/sitemap.xml
