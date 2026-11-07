@@ -8,5 +8,5 @@ One-time: **Settings → Pages → Source: GitHub Actions**.
 Site URL: `https://123rahmat.github.io/NX/`
 
 ## Contact form
-Paste your Web3Forms access key into `<meta name="form-key" content="">` in `index.html`.
-Do not edit the `<script>` block: it is locked by a CSP hash.
+Paste your email (or FormSubmit alias) into `<meta name="form-key">` in `index.html`.
+Uses FormSubmit (free). First message triggers an activation email from FormSubmit: click it once. Do not edit the `<script>` block: it is locked by a CSP hash.
