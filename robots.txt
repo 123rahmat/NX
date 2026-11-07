@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://123rahmat.github.io/NX/sitemap.xml
+Sitemap: https://nexwire.pk/sitemap.xml
