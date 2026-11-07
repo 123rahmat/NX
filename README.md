@@ -1,4 +1,4 @@
-# Nexora Digital website
+# Nexwire website
 
 Single-file static site (`index.html`) — no build step, no dependencies.
 
