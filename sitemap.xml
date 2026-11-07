@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://nexwire.pk/</loc><priority>1.0</priority></url>
-  <url><loc>https://nexwire.pk/web-development/</loc><priority>0.8</priority></url>
-  <url><loc>https://nexwire.pk/embedded-systems/</loc><priority>0.8</priority></url>
-  <url><loc>https://nexwire.pk/iot-solutions/</loc><priority>0.8</priority></url>
-  <url><loc>https://nexwire.pk/mobile-apps/</loc><priority>0.8</priority></url>
-  <url><loc>https://nexwire.pk/projects/</loc><priority>0.8</priority></url>
+  <url><loc>https://123rahmat.github.io/NX/</loc><priority>1.0</priority></url>
+  <url><loc>https://123rahmat.github.io/NX/web-development/</loc><priority>0.8</priority></url>
+  <url><loc>https://123rahmat.github.io/NX/embedded-systems/</loc><priority>0.8</priority></url>
+  <url><loc>https://123rahmat.github.io/NX/iot-solutions/</loc><priority>0.8</priority></url>
+  <url><loc>https://123rahmat.github.io/NX/mobile-apps/</loc><priority>0.8</priority></url>
+  <url><loc>https://123rahmat.github.io/NX/projects/</loc><priority>0.8</priority></url>
 </urlset>

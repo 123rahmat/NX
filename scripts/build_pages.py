@@ -2,7 +2,7 @@
 import html, json, os, sys
 
 ROOT = sys.argv[1]
-BASE = "https://nexwire.pk/"
+BASE = "https://123rahmat.github.io/NX/"
 PHONE = "+92 341 2010948"
 WA = "https://wa.me/923412010948?text=" + "Hi%20Nexwire%2C%20I%27d%20like%20to%20discuss%20a%20project."
 FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
