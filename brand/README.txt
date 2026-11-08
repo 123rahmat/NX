@@ -1,7 +1,7 @@
 LINQORE BRAND PACK  (pronounced "link-core")
 
-Symbol: the letter L drawn as a wire running from a microchip core to a connection node.
-Wordmark: the q ends in the same node (the signature detail).
+Symbol: a rotated chip with a solid core and four pins, each ending in a connection node.
+Wordmark: lowercase "linqore" in IBM Plex Sans SemiBold.
 
 logo/        Full logos as SVG (vector, any size) and logo/png/ (high resolution, transparent)
   linqore-logo.svg               Main logo for light backgrounds
@@ -10,7 +10,7 @@ logo/        Full logos as SVG (vector, any size) and logo/png/ (high resolution
   linqore-logo-mono-*.svg        One-colour versions (printing, stamps, engraving)
 
 icon/        The symbol on its own, and icon/png/ in standard sizes
-  linqore-icon (blue), linqore-icon-dark (navy), linqore-icon-round, linqore-symbol (no box)
+  linqore-icon (white on blue), linqore-icon-dark (gradient on navy), linqore-icon-round, linqore-symbol (gradient, no box)
   16, 32, 48 px          Browser tab icons (favicon)
   180 px                 iPhone home screen (apple-touch-icon)
   192, 512 px            Android and web app icons
