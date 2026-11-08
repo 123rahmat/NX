@@ -1,0 +1,443 @@
+{
+ "brand": {
+  "name": "Nexwire"
+ },
+ "contact": {
+  "wa": "923412010948",
+  "phone": "+92 341 2010948",
+  "email": "rahmat.uetm.edu@gmail.com",
+  "city": "Islamabad",
+  "address": "",
+  "hours": "",
+  "reply": ""
+ },
+ "hero": {
+  "eyebrow": "Digital solutions · Islamabad",
+  "title": "Engineering and software for connected products.",
+  "lead": "We design and deliver embedded systems, IoT platforms, web applications and mobile apps for organisations that need dependable technology, from the first specification to long-term support.",
+  "cta1": "Request a quotation",
+  "cta2": "View services",
+  "points": [
+   "Simulation before hardware",
+   "One team, one scope",
+   "Support after delivery"
+  ]
+ },
+ "quote": {
+  "text": "We would rather tell you a project is simple than sell you a complicated one.",
+  "by": "Our approach to every project"
+ },
+ "pipeline": [
+  {
+   "t": "Simulate",
+   "d": "Model the system and test the control logic on a computer before any parts are bought.",
+   "m": "MATLAB/Simulink · Proteus",
+   "wave": true
+  },
+  {
+   "t": "Firmware",
+   "d": "Write and test the code on the board: sensors, control logic, alerts and low power use.",
+   "m": "ESP32 · STM32 · Arduino",
+   "wave": false
+  },
+  {
+   "t": "Connect",
+   "d": "Send device data to the cloud and send commands and updates back to the device.",
+   "m": "Wi-Fi · GSM · Bluetooth · Serial · MQTT",
+   "wave": false
+  },
+  {
+   "t": "Monitor",
+   "d": "A dashboard and phone app show live data, history and alerts. What you learn feeds the next update.",
+   "m": "Web dashboard · Mobile app",
+   "wave": false
+  }
+ ],
+ "services": {
+  "title": "Our services",
+  "sub": "Engineering across hardware and software, delivered by one team under one scope.",
+  "items": [
+   {
+    "t": "Websites and web platforms",
+    "d": "Company websites, customer portals and admin systems that are fast, secure and easy for your team to manage.",
+    "tags": [
+     "Websites",
+     "Portals",
+     "Admin panels"
+    ]
+   },
+   {
+    "t": "Embedded firmware",
+    "d": "The code that runs on the device: reading sensors, controlling motors and relays, saving power and handling faults.",
+    "tags": [
+     "ESP32",
+     "STM32",
+     "Arduino",
+     "C and C++"
+    ]
+   },
+   {
+    "t": "Connectivity and cloud",
+    "d": "Secure connection between the device and a server, data storage, remote commands and over-the-air updates.",
+    "tags": [
+     "Wi-Fi",
+     "GSM",
+     "Bluetooth",
+     "Serial",
+     "MQTT",
+     "HTTP",
+     "TCP/UDP"
+    ]
+   },
+   {
+    "t": "Dashboards and mobile apps",
+    "d": "Screens that show what your system is doing, send commands and raise alerts, built for the people who use the system every day.",
+    "tags": [
+     "Web dashboard",
+     "Android and iOS app",
+     "Alerts"
+    ]
+   },
+   {
+    "t": "Simulation and testing",
+    "d": "Model the machine, tank, motor or building and run the firmware against it, so mistakes show up before real hardware is involved.",
+    "tags": [
+     "MATLAB/Simulink",
+     "Proteus",
+     "Test benches"
+    ]
+   },
+   {
+    "t": "Integration and support",
+    "d": "Connect devices to the systems you already use, help with installation and keep the software working after delivery.",
+    "tags": [
+     "Installation help",
+     "Maintenance",
+     "Documentation"
+    ]
+   }
+  ]
+ },
+ "request": {
+  "title": "Request a project",
+  "sub": "Describe your requirement and our team will reply by WhatsApp, phone or email with a scope, timeline and quotation.",
+  "budgetHint": "e.g. a rough range"
+ },
+ "show": {
+  "faq": true
+ },
+ "about": {
+  "title": "About us",
+  "intro": "Nexwire is an engineering and software company based in Islamabad. We build the systems organisations depend on, from firmware on a device to the web platform and application their teams use.",
+  "story": "Most organisations do not need an isolated tool. They need devices, connectivity, platforms and applications that work together as one system.\nWe take responsibility for that whole system. We define the requirement, model it where hardware is involved, build and test the software, and deliver a platform your team can operate.\nEvery engagement starts with a written scope and quotation, and ends with a documented, working system and a support arrangement.\n",
+  "values": [
+   {
+    "t": "Test before building",
+    "d": "Simulation catches mistakes while they are still cheap to fix."
+   },
+   {
+    "t": "One cycle, one team",
+    "d": "Firmware, connection and app are designed together, so they work together."
+   },
+   {
+    "t": "Clear scope and price",
+    "d": "You know what you get, when, and what it costs before work starts."
+   }
+  ]
+ },
+ "projects": {
+  "title": "Projects",
+  "sub": "Systems we have designed and built, from firmware on the device to the application that controls it.",
+  "items": [
+   {
+    "t": "Smart attendance system",
+    "cat": "Embedded and IoT",
+    "v": "fingerprint",
+    "status": "Completed",
+    "year": "2025",
+    "d": "Fingerprint attendance on ESP32. Admins enrol and remove people from a mobile app, each scan is time-stamped and sent to the server over HTTP, and removing a company revokes access for all of its users.",
+    "tags": [
+     "ESP32",
+     "Fingerprint sensor",
+     "HTTP",
+     "Mobile app"
+    ]
+   },
+   {
+    "t": "RFID and NFC read-write system",
+    "cat": "Embedded and IoT",
+    "v": "rfid",
+    "status": "Completed",
+    "year": "2025",
+    "d": "Reads and writes NFC card data from a mobile app in text and hex form, and copies the contents of one card onto another.",
+    "tags": [
+     "RFID",
+     "NFC",
+     "Hex",
+     "Mobile app"
+    ]
+   },
+   {
+    "t": "Smart plug with scheduling",
+    "cat": "Embedded and IoT",
+    "v": "plug",
+    "status": "Completed",
+    "year": "2025",
+    "d": "Switches a relay on a schedule taken from an RTC or from the network, with timer mode in minutes and direct control from a mobile app.",
+    "tags": [
+     "ESP32",
+     "Relay",
+     "RTC",
+     "Wi-Fi"
+    ]
+   },
+   {
+    "t": "Real-time remote power monitoring",
+    "cat": "Power and energy",
+    "v": "power",
+    "status": "Completed",
+    "year": "2025",
+    "d": "Measures voltage and current with sensors on an ESP32 and publishes the readings over MQTT, so power use can be monitored remotely on a mobile screen.",
+    "tags": [
+     "ESP32",
+     "MQTT",
+     "Voltage and current sensors"
+    ]
+   },
+   {
+    "t": "Solar fault and damage detection",
+    "cat": "Power and energy",
+    "v": "solar",
+    "status": "Completed",
+    "year": "2023",
+    "d": "Measures irradiance, temperature and operating voltage and current, plots the I-V curve and operating point in Python, locates a fault on screen and disconnects the faulty panel through a relay.",
+    "tags": [
+     "Arduino",
+     "ESP32",
+     "TCP",
+     "Python",
+     "I-V curve"
+    ]
+   },
+   {
+    "t": "Human detection with computer vision",
+    "cat": "AI and vision",
+    "v": "vision",
+    "status": "Completed",
+    "year": "2024",
+    "d": "A YOLOv5 model trained on a labelled human dataset in PyTorch, with tuned hyperparameters and epochs, for real-time person detection.",
+    "tags": [
+     "YOLOv5",
+     "PyTorch",
+     "Google Colab",
+     "Python"
+    ]
+   },
+   {
+    "t": "Smart health monitoring system",
+    "cat": "Health and wellness",
+    "v": "health",
+    "status": "Completed",
+    "year": "",
+    "d": "Reads heart rate, blood oxygen, body temperature and GPS location with an ESP32 and sends them over GSM to the Blynk IoT app for remote viewing.",
+    "tags": [
+     "ESP32",
+     "MAX30102",
+     "MLX90614",
+     "GPS",
+     "SIM800L",
+     "Blynk"
+    ]
+   }
+  ]
+ },
+ "faq": {
+  "title": "Common questions",
+  "items": [
+   {
+    "q": "How do I get a quote?",
+    "a": "Send the request form on this page. It goes straight to our team, and we reply with scope, timeline and price."
+   },
+   {
+    "q": "Which technologies do you use?",
+    "a": "For devices: ARM Cortex-M (STM32), ESP32, Arduino and Raspberry Pi. For software: web dashboards, Android and iOS apps, cloud APIs and MQTT. Tell us what you already have and we work with it."
+   },
+   {
+    "q": "Do I need hardware to start?",
+    "a": "No. Many projects are websites or apps only. If you need a device, we advise on suitable boards and sensors."
+   },
+   {
+    "q": "Can I visit the office?",
+    "a": "Our office is in Islamabad. Email or call us first so we can set a time."
+   },
+   {
+    "q": "What happens after the project is delivered?",
+    "a": "You get the working system and a short manual. Ask about support when you request your quote."
+   }
+  ]
+ },
+ "comms": {
+  "title": "Communication links and protocols",
+  "sub": "We connect devices over the link that suits the site, and use the protocol your systems already speak.",
+  "links": [
+   {
+    "t": "Wi-Fi",
+    "d": "Local networks and direct cloud access for indoor and campus systems.",
+    "tags": [
+     "ESP32",
+     "ESP8266",
+     "Provisioning"
+    ]
+   },
+   {
+    "t": "GSM and LTE",
+    "d": "Remote sites with no Wi-Fi, using mobile data or SMS alerts.",
+    "tags": [
+     "SIM800L",
+     "GPRS data",
+     "SMS"
+    ]
+   },
+   {
+    "t": "Bluetooth",
+    "d": "Short-range pairing and setup from a phone app.",
+    "tags": [
+     "BLE",
+     "Classic",
+     "App setup"
+    ]
+   },
+   {
+    "t": "Serial and wired",
+    "d": "Boards, sensors and industrial equipment on a wire.",
+    "tags": [
+     "UART",
+     "SPI",
+     "I2C",
+     "RS-485",
+     "CAN"
+    ]
+   }
+  ],
+  "protocols": [
+   {
+    "t": "MQTT",
+    "d": "Lightweight publish and subscribe for sensors and commands."
+   },
+   {
+    "t": "HTTP / HTTPS",
+    "d": "REST APIs and web services between devices and servers."
+   },
+   {
+    "t": "TCP",
+    "d": "Reliable data streams, for example device to PC or server."
+   },
+   {
+    "t": "UDP",
+    "d": "Fast, low-latency telemetry where an occasional loss is acceptable."
+   },
+   {
+    "t": "WebSocket",
+    "d": "Live two-way updates for dashboards."
+   },
+   {
+    "t": "Modbus",
+    "d": "Industrial meters, drives and controllers."
+   },
+   {
+    "t": "CoAP",
+    "d": "Constrained devices on low-power networks."
+   },
+   {
+    "t": "TLS",
+    "d": "Encryption for data in transit."
+   }
+  ]
+ },
+ "footer": "Digital solutions · Islamabad",
+ "legal": {
+  "updated": "6 November 2026",
+  "docs": [
+   {
+    "id": "privacy",
+    "title": "Privacy policy",
+    "sections": [
+     {
+      "t": "Who we are",
+      "b": "This website is run by Nexwire (\"we\", \"us\"), a digital solutions company in Islamabad. We decide why and how the personal data described here is used. You can reach us at the email address or phone number in the Contact section."
+     },
+     {
+      "t": "What we collect",
+      "b": "Only what you type into the contact form: your name, a phone number or email, your city, the service you are interested in, an optional budget, and your message. We do not ask for anything else, and we do not ask for sensitive data. Please do not put passwords, payment details or health information in the form."
+     },
+     {
+      "t": "What we do not collect",
+      "b": "This website has no accounts and no advertising, and it does not use analytics, tracking pixels or cookies. We do not profile visitors or make automated decisions about them."
+     },
+     {
+      "t": "Why we use it and our legal basis",
+      "b": "We use your details only to reply to your enquiry, prepare a quotation and, if you go ahead, deliver the work. We handle your data in line with the laws of Pakistan, including the Prevention of Electronic Crimes Act 2016. We rely on taking steps at your request before a contract, and on our legitimate interest in answering the people who contact us. Where we rely on consent, you can withdraw it at any time."
+     },
+     {
+      "t": "Who receives your data",
+      "b": "The contact form is delivered by FormSubmit, a form-to-email service, which passes your message to our inbox (an email provider acts for us there). These providers may process data in other countries. We do not sell your data, rent it, or share it for advertising."
+     },
+     {
+      "t": "How long we keep it",
+      "b": "We keep an enquiry for as long as it takes to deal with it, and afterwards only as long as we need to keep a record of our work together or meet legal duties. Enquiries that do not lead to work are deleted within 12 months."
+     },
+     {
+      "t": "Your rights",
+      "b": "Depending on where you live, you may have the right to ask for a copy of your data, to have it corrected or deleted, to restrict or object to its use, to receive it in a portable format, and to withdraw consent. Residents of California and other US states may also ask what we hold, and we do not sell or share personal information. We will not treat you differently for asking. Contact us to use any of these rights; we will reply within one month. You may also complain to your local data protection authority."
+     },
+     {
+      "t": "Security",
+      "b": "The site is served over HTTPS, runs no accounts or database of its own, and restricts what scripts can run in your browser. No online service is perfectly secure, so we cannot guarantee absolute security."
+     },
+     {
+      "t": "Children",
+      "b": "This website is for businesses and adults. It is not directed at anyone under 16, and we do not knowingly collect data from children. If you think a child has sent us data, tell us and we will delete it."
+     },
+     {
+      "t": "Changes and contact",
+      "b": "If we change this policy we will update the date above. For any privacy question or request, use the email address or phone number in the Contact section."
+     }
+    ]
+   },
+   {
+    "id": "terms",
+    "title": "Terms of use",
+    "sections": [
+     {
+      "t": "About this website",
+      "b": "This website describes the services of Nexwire and lets you contact us. By using it you agree to these terms. If you do not agree, please do not use it."
+     },
+     {
+      "t": "Information and quotations",
+      "b": "We try to keep the content accurate, but it is general information and not an offer. Descriptions of projects and technologies are illustrative. A price, scope or timeline only binds us when we confirm it to you in writing."
+     },
+     {
+      "t": "Acceptable use",
+      "b": "Do not misuse the site: do not send spam or unlawful content through the contact form, try to disrupt or probe the site, or use automated means to overload it."
+     },
+     {
+      "t": "Intellectual property",
+      "b": "The site design, text, illustrations and code belong to Nexwire or its licensors. You may view it and share its address, but you may not copy or republish it without our written permission. Project names and technologies mentioned belong to their owners."
+     },
+     {
+      "t": "Links and third parties",
+      "b": "The site links to or uses third-party services such as FormSubmit and WhatsApp. We do not control them and are not responsible for their content or practices."
+     },
+     {
+      "t": "No warranty and liability",
+      "b": "The site is provided as it is, without promises that it will always be available or error-free. To the fullest extent the law allows, we are not liable for loss arising from using the site. Nothing here limits any right you have by law that cannot be excluded, or liability that cannot be excluded by law."
+     },
+     {
+      "t": "Changes and governing law",
+      "b": "We may update these terms; the date above shows the latest version. They are governed by the laws of Pakistan, and the courts of Islamabad have jurisdiction, without affecting any mandatory consumer rights you have by law."
+     }
+    ]
+   }
+  ]
+ }
+}

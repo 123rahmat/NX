@@ -11,7 +11,7 @@ import pathlib, re, subprocess, sys
 from urllib.parse import urlparse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-CONFIG = ROOT / "scripts" / "build_pages.py"
+CONFIG = ROOT / "scripts" / "build_site.py"
 
 
 def main():
@@ -42,7 +42,7 @@ def main():
     else:
         cname.write_text(u.netloc.lower() + "\n")
 
-    subprocess.run([sys.executable, str(CONFIG), str(ROOT)], check=True)
+    subprocess.run([sys.executable, str(CONFIG)], check=True)
     print(f"{old} -> {new}")
     print("Updated:", ", ".join(sorted(changed)))
     print("Next: commit and push, then set the same domain in Settings -> Pages -> Custom domain and tick Enforce HTTPS.")

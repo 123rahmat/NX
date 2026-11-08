@@ -1,0 +1,7 @@
+version: 2
+updates:
+  # Keep the pinned GitHub Actions up to date with security fixes.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
