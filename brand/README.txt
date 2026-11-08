@@ -1,5 +1,7 @@
 LINQORE BRAND PACK  (pronounced "link-core")
 
+Symbol: the letter L drawn as a wire that wraps a glowing core and ends in a connection node.
+
 logo/        Full logos as SVG (vector, any size) and logo/png/ (high resolution, transparent)
   linqore-logo.svg               Main logo for light backgrounds
   linqore-logo-white.svg         For dark backgrounds and photos
@@ -7,6 +9,7 @@ logo/        Full logos as SVG (vector, any size) and logo/png/ (high resolution
   linqore-logo-mono-*.svg        One-colour versions (printing, stamps, engraving)
 
 icon/        The symbol on its own, and icon/png/ in standard sizes
+  linqore-icon (blue), linqore-icon-dark (navy), linqore-icon-round, linqore-symbol (no box)
   16, 32, 48 px          Browser tab icons (favicon)
   180 px                 iPhone home screen (apple-touch-icon)
   192, 512 px            Android and web app icons
@@ -25,4 +28,3 @@ linqore-brand-guidelines.pdf   How to use the name, logo, colours and fonts
 
 Colours: Deep Navy #0B1426 · Linqore Blue #1D5FD6 · Core Cyan #22D3EE · Cloud #F5F7FB
 Fonts:   IBM Plex Sans and IBM Plex Mono (free, SIL Open Font License)
-Use SVG files for print and design work; PNG files for quick uploads.
