@@ -1,6 +1,7 @@
 LINQORE BRAND PACK  (pronounced "link-core")
 
-Symbol: the letter L drawn as a wire that wraps a glowing core and ends in a connection node.
+Symbol: the letter L drawn as a wire running from a microchip core to a connection node.
+Wordmark: the q ends in the same node (the signature detail).
 
 logo/        Full logos as SVG (vector, any size) and logo/png/ (high resolution, transparent)
   linqore-logo.svg               Main logo for light backgrounds

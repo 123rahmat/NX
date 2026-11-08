@@ -56,8 +56,8 @@ ICON = {
     "signal": I('<path d="M4 20v-3M9 20v-7M14 20V9M19 20V4"/>'),
 }
 WAICON = ('<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6 0-.9.4s-1.2 1.1-1.2 2.7 1.2 3.2 1.4 3.4 2.4 3.6 5.7 5c2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.4z"/></svg>')
-LOGO = '<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1D5FD6"/><path d="M17 14v26a10 10 0 0 0 10 10h20" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><circle cx="38" cy="27" r="9.5" fill="none" stroke="#22D3EE" stroke-width="5"/><circle cx="38" cy="27" r="3" fill="#22D3EE"/><circle cx="47" cy="50" r="4" fill="#22D3EE"/></svg>'
-FAVICON = "data:image/svg+xml," + quote('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#1D5FD6"/><path d="M17 14v26a10 10 0 0 0 10 10h20" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><circle cx="38" cy="27" r="9.5" fill="none" stroke="#22D3EE" stroke-width="5"/><circle cx="38" cy="27" r="3" fill="#22D3EE"/><circle cx="47" cy="50" r="4" fill="#22D3EE"/></svg>')
+LOGO = '<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1D5FD6"/><path d="M17 13.5v26a10.5 10.5 0 0 0 10.5 10.5H46" fill="none" stroke="#fff" stroke-width="5.6" stroke-linecap="round"/><path d="M26 22h3.5M26 27h3.5M26 32h3.5M46.5 22h3.5M46.5 27h3.5M46.5 32h3.5" stroke="#22D3EE" stroke-width="2.8" stroke-linecap="round"/><rect x="29.5" y="17.5" width="17" height="19" rx="4.5" fill="#22D3EE"/><circle cx="38" cy="27" r="3.4" fill="#1D5FD6"/><circle cx="47.5" cy="50" r="4.4" fill="#22D3EE"/></svg>'
+FAVICON = "data:image/svg+xml," + quote('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#1D5FD6"/><path d="M17 13.5v26a10.5 10.5 0 0 0 10.5 10.5H46" fill="none" stroke="#fff" stroke-width="5.6" stroke-linecap="round"/><path d="M26 22h3.5M26 27h3.5M26 32h3.5M46.5 22h3.5M46.5 27h3.5M46.5 32h3.5" stroke="#22D3EE" stroke-width="2.8" stroke-linecap="round"/><rect x="29.5" y="17.5" width="17" height="19" rx="4.5" fill="#22D3EE"/><circle cx="38" cy="27" r="3.4" fill="#1D5FD6"/><circle cx="47.5" cy="50" r="4.4" fill="#22D3EE"/></svg>')
 
 # ---------------------------------------------------------------- services
 SERVICES = [
@@ -206,7 +206,7 @@ def page(path, title, desc, body, schemas=(), cur=""):
     svc_cur = cur == "services" or cur in {s["slug"] for s in SERVICES}
     header = f'''<a class="skip" href="#main">Skip to content</a>
 <header class="hdr"><div class="wrap">
-<a class="brand" href="{rel or './'}" aria-label="Linqore home">{LOGO}<span class="wm">Lin<span class="q">q</span>ore</span></a>
+<a class="brand" href="{rel or './'}" ><img src="{rel}assets/logo.svg" alt="Linqore" width="128" height="32"></a>
 <button class="burger" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span></button>
 <nav class="nav" id="nav" aria-label="Main">
 {nav_a("", "Home", "home") if path else '<a href="./" aria-current="page">Home</a>'}
@@ -219,7 +219,7 @@ def page(path, title, desc, body, schemas=(), cur=""):
 </nav></div></header>'''
     footer = f'''<footer class="ftr"><div class="wrap">
 <div class="cols">
-<div><a class="brand" href="{rel or './'}">{LOGO}<span class="wm">Lin<span class="q">q</span>ore</span></a><p>Engineering and software for connected products: embedded systems, IoT platforms, web applications and mobile apps.</p></div>
+<div><a class="brand" href="{rel or './'}"><img src="{rel}assets/logo.svg" alt="Linqore" width="128" height="32"></a><p>Engineering and software for connected products: embedded systems, IoT platforms, web applications and mobile apps.</p></div>
 <div><h2 class="fh">Services</h2><ul>{"".join(f'<li><a href="{rel}{s["slug"]}/">{e(s["nav"])}</a></li>' for s in SERVICES)}</ul></div>
 <div><h2 class="fh">Company</h2><ul><li><a href="{rel}projects/">Projects</a></li><li><a href="{rel}about/">About us</a></li><li><a href="{rel}contact/">Contact</a></li><li><a href="{rel}privacy/">Privacy policy</a></li><li><a href="{rel}terms/">Terms of use</a></li></ul></div>
 <div><h2 class="fh">Contact</h2><ul><li><a href="tel:{TEL}">{e(PHONE)}</a></li><li><a href="{WA}" target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li><a href="{rel}contact/">Send a request</a></li><li>{e(C["city"])}</li></ul></div>
