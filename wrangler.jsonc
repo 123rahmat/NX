@@ -1,0 +1,9 @@
+{
+  // Cloudflare Workers static site. Build first with: bash scripts/cf-build.sh
+  "name": "velundi",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}
