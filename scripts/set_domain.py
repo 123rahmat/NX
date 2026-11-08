@@ -1,7 +1,7 @@
 """Switch the whole site to a new address in one step.
 
 Usage (from the repo root):
-    python3 scripts/set_domain.py https://nexwire.com/
+    python3 scripts/set_domain.py https://linqore.com/
 
 Rewrites every canonical, Open Graph, schema and sitemap URL, regenerates the
 service pages and writes the CNAME file GitHub Pages needs for a custom domain.
@@ -20,7 +20,7 @@ def main():
     new = sys.argv[1].strip()
     u = urlparse(new)
     if u.scheme != "https" or not u.netloc or u.params or u.query or u.fragment:
-        sys.exit("Give a full https address, for example https://nexwire.com/")
+        sys.exit("Give a full https address, for example https://linqore.com/")
     new = f"https://{u.netloc.lower()}{u.path.rstrip('/')}/"
 
     old = re.search(r'^BASE = "([^"]+)"', CONFIG.read_text(), re.M).group(1)

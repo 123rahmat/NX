@@ -1,34 +1,35 @@
-# Nexwire website
+# Linqore website
 
-Static multi-page site published by GitHub Actions to GitHub Pages:
-https://123rahmat.github.io/NX/
+Static multi-page site for Linqore (embedded systems, IoT, web and mobile apps).
+Live: https://123rahmat.github.io/NX/ (GitHub Pages) and the Cloudflare Worker `nx`.
 
 ## Structure
-- `scripts/content.json`: all text (services, projects, FAQ, legal). Edit content here.
-- `scripts/build_site.py`: builds every page, `sitemap.xml` and `robots.txt`.
-- `assets/site.css`, `assets/site.js`: shared design and behaviour (menu, hero animation, filters, contact form).
-- `fonts/`: self-hosted IBM Plex (SIL Open Font License, see `fonts/OFL.txt`).
+| Path | Purpose |
+|---|---|
+| `scripts/content.json` | All text: services, projects, FAQ, legal |
+| `scripts/build_site.py` | Builds every page, `sitemap.xml`, `robots.txt` and `404.html` |
+| `assets/site.css`, `assets/site.js` | Shared design and behaviour (menu, hero animation, filters, contact form) |
+| `assets/logo.svg` | Header and footer logo (from the brand pack) |
+| `fonts/` | Self-hosted IBM Plex (SIL Open Font License) |
+| `brand/` | Logo and brand pack; never published |
 
-After editing content or the generator, rebuild and commit:
+Rebuild after any content or design change, then commit:
 
     python3 scripts/build_site.py
 
+## Publishing
+- **GitHub Pages:** `.github/workflows/pages.yml` runs security checks and publishes public files on every push.
+- **Cloudflare:** `wrangler.jsonc` runs `scripts/cf-build.sh`, which copies only public files to `public/`; `_headers` adds security headers.
+
 ## Contact form
-Sent through FormSubmit to the address in `FORM_TO` in `scripts/build_site.py`.
-The first message triggers an activation email from FormSubmit: click it once.
-Then replace the email in `FORM_TO` with the random alias FormSubmit gives you and rebuild,
-so your address is not visible in the page.
+Sent through FormSubmit to `FORM_TO` in `scripts/build_site.py`. Activate it once from FormSubmit's first email,
+then replace the address with the alias FormSubmit gives you and rebuild.
+
+## Custom domain
+After buying a domain and pointing it at the host:
+
+    python3 scripts/set_domain.py https://yourdomain.com/
 
 ## Security
-- Strict Content-Security-Policy on every page: scripts only from this site, no inline code,
-  network requests only to FormSubmit, no plugins, no embedding in other sites.
-- Deploy workflow: least-privilege permissions, actions pinned to exact commits, a check that
-  fails the deploy if a page lacks the security policy or a secret is committed.
-  Only public files are published (no `scripts/`, `README.md` or `.github/`).
-- Dependabot keeps the pinned actions updated.
-
-## Moving to your own domain later
-1. Buy the domain and point its DNS at GitHub Pages (A records 185.199.108.153, .109.153, .110.153, .111.153; `www` CNAME to `123rahmat.github.io`).
-2. Run `python3 scripts/set_domain.py https://yourdomain.com/`, then commit and push.
-3. Settings -> Pages -> Custom domain: enter the domain, tick Enforce HTTPS.
-4. In Google Search Console add the new domain and use Settings -> Change of address.
+Strict Content-Security-Policy on every page (scripts only from this site, no inline code), security headers on
+Cloudflare, least-privilege deploy workflow with actions pinned to exact commits, and Dependabot updates.

@@ -6,7 +6,7 @@ Reads scripts/content.json and writes every page, sitemap.xml and robots.txt
 into the repository root. Shared look and behaviour live in assets/site.css
 and assets/site.js. Edit content in content.json or in this file, then rerun.
 """
-import html, json, pathlib
+import hashlib, html, json, pathlib
 from urllib.parse import quote
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -23,6 +23,13 @@ e = html.escape
 def lc(t):
     """Lower-case a label for use mid-sentence, keeping acronyms such as IoT."""
     return " ".join(w if any(ch.isupper() for ch in w[1:]) else w.lower() for w in t.split())
+
+# Content hashes for cache-busting: a changed file gets a new URL, so browsers and CDNs never serve a stale copy.
+def _v(path):
+    return hashlib.sha256((ROOT / path).read_bytes()).hexdigest()[:10]
+
+
+V = {k: _v(k) for k in ("assets/site.css", "assets/site.js", "assets/logo.svg", "assets/apple-touch-icon.png")}
 
 CSP = ("default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; "
        "connect-src https://formsubmit.co; base-uri 'none'; form-action 'none'; object-src 'none'; "
@@ -206,7 +213,7 @@ def page(path, title, desc, body, schemas=(), cur=""):
     svc_cur = cur == "services" or cur in {s["slug"] for s in SERVICES}
     header = f'''<a class="skip" href="#main">Skip to content</a>
 <header class="hdr"><div class="wrap">
-<a class="brand" href="{rel or './'}" ><img src="{rel}assets/logo.svg" alt="Linqore" width="122" height="32"></a>
+<a class="brand" href="{rel or './'}" ><img src="{rel}assets/logo.svg?v={V['assets/logo.svg']}" alt="Linqore" width="122" height="32"></a>
 <button class="burger" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span></button>
 <nav class="nav" id="nav" aria-label="Main">
 {nav_a("", "Home", "home") if path else '<a href="./" aria-current="page">Home</a>'}
@@ -219,7 +226,7 @@ def page(path, title, desc, body, schemas=(), cur=""):
 </nav></div></header>'''
     footer = f'''<footer class="ftr"><div class="wrap">
 <div class="cols">
-<div><a class="brand" href="{rel or './'}"><img src="{rel}assets/logo.svg" alt="Linqore" width="122" height="32"></a><p>Engineering and software for connected products: embedded systems, IoT platforms, web applications and mobile apps.</p></div>
+<div><a class="brand" href="{rel or './'}"><img src="{rel}assets/logo.svg?v={V['assets/logo.svg']}" alt="Linqore" width="122" height="32"></a><p>Engineering and software for connected products: embedded systems, IoT platforms, web applications and mobile apps.</p></div>
 <div><h2 class="fh">Services</h2><ul>{"".join(f'<li><a href="{rel}{s["slug"]}/">{e(s["nav"])}</a></li>' for s in SERVICES)}</ul></div>
 <div><h2 class="fh">Company</h2><ul><li><a href="{rel}projects/">Projects</a></li><li><a href="{rel}about/">About us</a></li><li><a href="{rel}contact/">Contact</a></li><li><a href="{rel}privacy/">Privacy policy</a></li><li><a href="{rel}terms/">Terms of use</a></li></ul></div>
 <div><h2 class="fh">Contact</h2><ul><li><a href="tel:{TEL}">{e(PHONE)}</a></li><li><a href="{WA}" target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li><a href="{rel}contact/">Send a request</a></li><li>{e(C["city"])}</li></ul></div>
@@ -244,10 +251,10 @@ def page(path, title, desc, body, schemas=(), cur=""):
 <meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)}"><meta name="twitter:description" content="{e(desc)}"><meta name="twitter:image" content="{BASE}og-image.png">
 <link rel="icon" href="{FAVICON}">
-<link rel="apple-touch-icon" href="{rel}assets/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="{rel}assets/apple-touch-icon.png?v={V['assets/apple-touch-icon.png']}">
 <link rel="preload" href="{rel}fonts/plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{rel}assets/site.css">
-<script src="{rel}assets/site.js"></script>
+<link rel="stylesheet" href="{rel}assets/site.css?v={V['assets/site.css']}">
+<script src="{rel}assets/site.js?v={V['assets/site.js']}"></script>
 {"".join(ld(s) for s in schemas)}
 </head>
 <body>
@@ -312,8 +319,8 @@ STAGES = "".join(
 CYCLE = CYCLE.replace("{LOGO}", LOGO).replace("{STAGES}", STAGES)
 TECH = ["ESP32", "STM32", "Arduino", "Raspberry Pi", "MQTT", "HTTP/HTTPS", "Wi-Fi", "GSM / LTE", "Bluetooth LE", "Modbus",
         "RS-485", "CAN", "MATLAB/Simulink", "Proteus", "Python", "PyTorch", "Android", "iOS", "REST APIs", "TLS"]
-MARQ = '<section class="marq" aria-label="Technologies we work with"><div class="marq-in">' + \
-    "".join(f"<span>{e(t)}</span>" for t in TECH) + "".join(f'<span aria-hidden="true">{e(t)}</span>' for t in TECH) + "</div></section>"
+MARQ = '<section class="marq" aria-label="Technologies we work with"><div class="marq-wrap"><div class="marq-in">' + \
+    "".join(f"<span>{e(t)}</span>" for t in TECH) + "".join(f'<span aria-hidden="true">{e(t)}</span>' for t in TECH) + "</div></div></section>"
 home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
 <div>
 <span class="eyebrow">{e(H["eyebrow"].replace(chr(183), "·"))}</span>
@@ -341,7 +348,6 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 <section class="sec alt"><div class="wrap">
 <div class="sec-h" data-rv><span class="kick">Selected projects</span><h2>{e(A["projects"]["title"])}</h2><p>{e(A["projects"]["sub"])}</p></div>
 <div class="pgrid">{"".join(proj_card(PROJ[k], "") for k in ["fingerprint", "power", "solar"])}</div>
-<div class="btns" style="margin-top:32px"></div>
 <p class="sec-more" data-rv><a class="btn btn-o" href="projects/">See all projects {ICON["arr"]}</a></p>
 </div></section>
 
@@ -352,7 +358,6 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 <div class="cards">{"".join(f'<div class="card" data-rv><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(A["about"]["values"], ["sim", "layers", "doc"]))}</div>
 </div></section>
 {cta_band("")}'''
-home = home.replace('<div class="btns" style="margin-top:32px"></div>\n', "")
 pages.append(page("", "Linqore | Embedded Systems, IoT, Web and Mobile App Development",
     "Linqore designs, builds and supports embedded systems, IoT platforms, web applications and mobile apps, engineered together as one system. Based in Islamabad.",
     home, [dict(ORG, **{"@context": "https://schema.org"}), {"@context": "https://schema.org", "@type": "WebSite", "name": "Linqore", "url": BASE}], "home"))
@@ -384,7 +389,7 @@ for s in SERVICES:
 <div data-rv><span class="kick">What we build</span><h2 class="h2">{e(s["nav"])} services</h2>
 <ul class="list">{"".join(f'<li>{ICON["check"]}<div><b>{e(a)}</b><span>{e(b)}</span></div></li>' for a, b in s["build"])}</ul></div>
 <div class="card" data-rv><div class="ico-b">{ICON[s["icon"]]}</div><h3>Technologies</h3><p>Tools and platforms we use for {e(lc(s["nav"]))}.</p>{tags(s["tech"])}
-<div class="btns" style="margin-top:24px"></div><a class="btn btn-p" href="../contact/?service={quote(s["nav"])}">Discuss your project {ICON["arr"]}</a></div>
+<div class="sp"></div><a class="btn btn-p" href="../contact/?service={quote(s["nav"])}">Discuss your project {ICON["arr"]}</a></div>
 </div></section>
 <section class="sec alt"><div class="wrap">
 <div class="sec-h" data-rv><span class="kick">Related work</span><h2>Projects using {e(lc(s["nav"]))}</h2></div>
@@ -392,7 +397,6 @@ for s in SERVICES:
 </div></section>
 <section class="sec"><div class="wrap"><div class="sec-h c" data-rv><span class="kick">Questions</span><h2>Common questions</h2></div>{faq_html(s["faq"])}</div></section>
 {cta_band("../")}'''
-    body = body.replace('<div class="btns" style="margin-top:24px"></div>', '<div class="sp"></div>')
     pages.append(page(s["slug"] + "/", s["title"], s["desc"], body, [
         {"@context": "https://schema.org", "@type": "Service", "name": s["nav"], "serviceType": s["nav"], "description": s["desc"],
          "provider": {"@id": BASE + "#org", "@type": "ProfessionalService", "name": "Linqore", "url": BASE},
@@ -424,7 +428,7 @@ story = "".join(f"<p>{e(x)}</p>" for x in AB["story"].strip().split("\n") if x.s
 about = phero("About", "One team, accountable for the whole system", AB["intro"], [("Home", ""), ("About", "about/")], "about") + f'''
 <section class="sec"><div class="wrap split">
 <div data-rv><span class="kick">Our story</span><h2 class="h2">Devices, connectivity and software that work as one</h2><div class="prose">{story}</div></div>
-<div class="cards" style="grid-template-columns:1fr" data-rv>{"".join(f'<div class="card"><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(AB["values"], ["sim", "layers", "doc"]))}</div>
+<div class="cards one" data-rv>{"".join(f'<div class="card"><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(AB["values"], ["sim", "layers", "doc"]))}</div>
 </div></section>
 <section class="sec dark"><div class="wrap">
 <div class="sec-h" data-rv><span class="kick">Connectivity</span><h2>{e(CM["title"])}</h2><p>{e(CM["sub"])}</p></div>
@@ -435,7 +439,6 @@ about = phero("About", "One team, accountable for the whole system", AB["intro"]
 <div class="proto" data-rv>{"".join(f'<div><b>{e(p["t"])}</b><p>{e(p["d"])}</p></div>' for p in CM["protocols"])}</div>
 </div></section>
 {cta_band("../")}'''
-about = about.replace('class="cards" style="grid-template-columns:1fr"', 'class="cards one"')
 pages.append(page("about/", "About Linqore: Engineering and Software Company in Islamabad",
     AB["intro"], about, [crumbs_ld([("Home", ""), ("About", "about/")])], "about"))
 
@@ -479,9 +482,9 @@ for d in A["legal"]["docs"]:
 
 # ---------------------------------------------------------------- 404 (served from any depth, so absolute paths)
 nf = page("404-tmp/", "Page not found | Linqore", "This page does not exist.",
-          f'<section class="phero"><div class="grid-bg"></div><div class="wrap"><div><h1>Page not found</h1><p class="lead">The page you are looking for does not exist or has moved.</p><div class="btns" style="margin-top:28px"></div><p><a class="btn btn-p" href="{BASE}">Back to home {ICON["arr"]}</a></p></div></div></section>')
+          f'<section class="phero"><div class="grid-bg"></div><div class="wrap"><div><h1>Page not found</h1><p class="lead">The page you are looking for does not exist or has moved.</p><p class="sec-more"><a class="btn btn-p" href="{BASE}">Back to home {ICON["arr"]}</a></p></div></div></section>')
 src = (ROOT / "404-tmp" / "index.html").read_text().replace('href="../', f'href="{BASE}').replace('src="../', f'src="{BASE}')
-src = src.replace('<div class="btns" style="margin-top:28px"></div>', "").replace(f'<link rel="canonical" href="{BASE}404-tmp/">', '<meta name="robots" content="noindex">')
+src = src.replace(f'<link rel="canonical" href="{BASE}404-tmp/">', '<meta name="robots" content="noindex">')
 (ROOT / "404.html").write_text(src)
 (ROOT / "404-tmp" / "index.html").unlink(); (ROOT / "404-tmp").rmdir()
 
