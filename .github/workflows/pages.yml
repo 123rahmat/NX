@@ -48,7 +48,7 @@ jobs:
       - name: Prepare site (public files only)
         run: |
           mkdir _site
-          rsync -a --exclude '.git' --exclude '.github' --exclude 'scripts' --exclude 'README.md' --exclude 'brand' --exclude '_site' ./ _site/
+          rsync -a --exclude '.git' --exclude '.github' --exclude 'scripts' --exclude 'README.md' --exclude 'brand' --exclude '_site' --exclude '_headers' ./ _site/
           find _site -type f | sort
 
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
