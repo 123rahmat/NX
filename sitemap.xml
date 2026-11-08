@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://123rahmat.github.io/NX/</loc><priority>1.0</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/services/</loc><priority>0.9</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/web-development/</loc><priority>0.8</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/embedded-systems/</loc><priority>0.8</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/iot-solutions/</loc><priority>0.8</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/mobile-apps/</loc><priority>0.8</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/projects/</loc><priority>0.8</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/about/</loc><priority>0.7</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/contact/</loc><priority>0.9</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/privacy/</loc><priority>0.2</priority></url>
-  <url><loc>https://123rahmat.github.io/NX/terms/</loc><priority>0.2</priority></url>
+  <url><loc>https://linqore.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://linqore.com/services/</loc><priority>0.9</priority></url>
+  <url><loc>https://linqore.com/web-development/</loc><priority>0.8</priority></url>
+  <url><loc>https://linqore.com/embedded-systems/</loc><priority>0.8</priority></url>
+  <url><loc>https://linqore.com/iot-solutions/</loc><priority>0.8</priority></url>
+  <url><loc>https://linqore.com/mobile-apps/</loc><priority>0.8</priority></url>
+  <url><loc>https://linqore.com/projects/</loc><priority>0.8</priority></url>
+  <url><loc>https://linqore.com/about/</loc><priority>0.7</priority></url>
+  <url><loc>https://linqore.com/contact/</loc><priority>0.9</priority></url>
+  <url><loc>https://linqore.com/privacy/</loc><priority>0.2</priority></url>
+  <url><loc>https://linqore.com/terms/</loc><priority>0.2</priority></url>
 </urlset>

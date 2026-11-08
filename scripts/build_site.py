@@ -1,4 +1,4 @@
-"""Build the Nexwire static site.
+"""Build the Linqore static site.
 
     python3 scripts/build_site.py
 
@@ -11,12 +11,12 @@ from urllib.parse import quote
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 A = json.loads((ROOT / "scripts" / "content.json").read_text())
-BASE = "https://123rahmat.github.io/NX/"
+BASE = "https://linqore.com/"
 C = A["contact"]
 PHONE, TEL = C["phone"], C["phone"].replace(" ", "")
 # Form destination. Replace the email with the FormSubmit alias once activated, to keep the address out of the page.
 FORM_TO = C["email"]
-WA = "https://wa.me/" + C["wa"] + "?text=" + quote("Hi Nexwire, I'd like to discuss a project.")
+WA = "https://wa.me/" + C["wa"] + "?text=" + quote("Hi Linqore, I'd like to discuss a project.")
 e = html.escape
 
 
@@ -56,14 +56,14 @@ ICON = {
     "signal": I('<path d="M4 20v-3M9 20v-7M14 20V9M19 20V4"/>'),
 }
 WAICON = ('<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6 0-.9.4s-1.2 1.1-1.2 2.7 1.2 3.2 1.4 3.4 2.4 3.6 5.7 5c2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.4z"/></svg>')
-LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#1D5FD6"/></linearGradient></defs><rect width="32" height="32" rx="8" fill="url(#lg)"/><path d="M9.5 23.5v-15l13 15v-15" fill="none" stroke="#fff" stroke-width="2.8" stroke-linejoin="round"/><circle cx="22.5" cy="8.5" r="2.2" fill="#22D3EE"/></svg>'
-FAVICON = "data:image/svg+xml," + quote('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1D5FD6"/><path d="M9.5 23.5v-15l13 15v-15" fill="none" stroke="#fff" stroke-width="2.8" stroke-linejoin="round"/><circle cx="22.5" cy="8.5" r="2.2" fill="#22D3EE"/></svg>')
+LOGO = '<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1D5FD6"/><circle cx="27" cy="27" r="13.5" fill="none" stroke="#fff" stroke-width="5"/><circle cx="27" cy="27" r="5" fill="#22D3EE"/><path d="M36.5 36.5 42 42h2.6" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50.5" cy="42" r="4.5" fill="none" stroke="#22D3EE" stroke-width="3"/><circle cx="50.5" cy="42" r="1.6" fill="#22D3EE"/></svg>'
+FAVICON = "data:image/svg+xml," + quote('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#0B1426"/><circle cx="27" cy="27" r="13.5" fill="none" stroke="#fff" stroke-width="5"/><circle cx="27" cy="27" r="5" fill="#22D3EE"/><path d="M36.5 36.5 42 42h2.6" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50.5" cy="42" r="4.5" fill="none" stroke="#22D3EE" stroke-width="3"/><circle cx="50.5" cy="42" r="1.6" fill="#22D3EE"/></svg>')
 
 # ---------------------------------------------------------------- services
 SERVICES = [
  {"slug": "web-development", "icon": "web", "nav": "Web development", "short": "Websites, portals and admin panels",
-  "title": "Web Development Company in Islamabad | Nexwire",
-  "desc": "Nexwire builds fast, secure company websites, customer portals and admin panels. Clear scope and quotation before work starts.",
+  "title": "Web Development Company in Islamabad | Linqore",
+  "desc": "Linqore builds fast, secure company websites, customer portals and admin panels. Clear scope and quotation before work starts.",
   "h1": "Websites, portals and admin panels that work as hard as you do",
   "intro": "We build company websites, customer portals and admin systems that load fast, stay secure and are easy for your team to manage. Every project starts with a written scope and quotation.",
   "build": [("Company websites", "Fast, mobile-first sites that explain what you do and turn visitors into enquiries."),
@@ -76,7 +76,7 @@ SERVICES = [
           ("Will my website work on mobile phones?", "Yes. Every site we build is designed for phones first and tested on phone, tablet and desktop screens."),
           ("Can you connect my website to devices or machines?", "Yes. We build web dashboards that show live data from sensors and devices and send commands back to them.")]},
  {"slug": "embedded-systems", "icon": "chip", "nav": "Embedded systems", "short": "Firmware for ESP32, STM32 and Arduino",
-  "title": "Embedded Systems and Firmware Development | Nexwire",
+  "title": "Embedded Systems and Firmware Development | Linqore",
   "desc": "Embedded firmware for ESP32, STM32 and Arduino: sensors, motor and relay control, low power and fault handling. Simulation before hardware.",
   "h1": "Embedded systems and firmware, tested before the hardware exists",
   "intro": "We write the code that runs on the device: reading sensors, controlling motors and relays, saving power and handling faults safely. We model the system first in MATLAB/Simulink or Proteus, so mistakes show up before parts are bought.",
@@ -90,7 +90,7 @@ SERVICES = [
           ("Do I need hardware before we start?", "No. We can simulate the system first and advise on suitable boards and sensors before you buy anything."),
           ("Can you fix or extend existing firmware?", "Yes. We can review existing code, fix faults and add features.")]},
  {"slug": "iot-solutions", "icon": "cloud", "nav": "IoT solutions", "short": "Devices, connectivity and cloud",
-  "title": "IoT Solutions and Cloud Connectivity | Nexwire",
+  "title": "IoT Solutions and Cloud Connectivity | Linqore",
   "desc": "End-to-end IoT systems: devices, Wi-Fi, GSM and Bluetooth connectivity, MQTT and HTTP cloud, remote control, alerts and over-the-air updates.",
   "h1": "IoT solutions that connect devices, data and people",
   "intro": "We connect devices securely to a server, with data storage, remote commands, alerts and over-the-air updates, all designed as one system. We choose the link that suits the site and the protocol your systems already speak.",
@@ -104,7 +104,7 @@ SERVICES = [
           ("Is the data secure?", "Data in transit is encrypted with TLS, and devices authenticate to the server."),
           ("Can you connect to systems we already use?", "Yes. We integrate with existing servers, industrial equipment over Modbus and RS-485, and third-party APIs.")]},
  {"slug": "mobile-apps", "icon": "phone", "nav": "Mobile apps and dashboards", "short": "Android, iOS and web dashboards",
-  "title": "Mobile App and Dashboard Development | Nexwire",
+  "title": "Mobile App and Dashboard Development | Linqore",
   "desc": "Android and iOS apps and web dashboards that show live data, send commands and raise alerts, built for the people who use them every day.",
   "h1": "Mobile apps and dashboards your team will actually use",
   "intro": "We build screens that show what your system is doing, send commands and raise alerts, designed for the people who use them every day. Apps are designed together with the firmware and connection, so the whole system works as one.",
@@ -178,7 +178,7 @@ def art(kind):
 def ld(obj):
     return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False).replace("</", "<\\/") + "</script>"
 
-ORG = {"@type": "ProfessionalService", "@id": BASE + "#org", "name": "Nexwire", "url": BASE,
+ORG = {"@type": "ProfessionalService", "@id": BASE + "#org", "name": "Linqore", "url": BASE,
        "image": BASE + "og-image.png", "logo": BASE + "og-image.png", "telephone": PHONE,
        "description": "Engineering and software for connected products: embedded systems, IoT platforms, web applications and mobile apps.",
        "address": {"@type": "PostalAddress", "addressLocality": C["city"], "addressCountry": "PK"},
@@ -206,7 +206,7 @@ def page(path, title, desc, body, schemas=(), cur=""):
     svc_cur = cur == "services" or cur in {s["slug"] for s in SERVICES}
     header = f'''<a class="skip" href="#main">Skip to content</a>
 <header class="hdr"><div class="wrap">
-<a class="brand" href="{rel or './'}" aria-label="Nexwire home">{LOGO}<span>Nexwire</span></a>
+<a class="brand" href="{rel or './'}" aria-label="Linqore home">{LOGO}<span class="wm">Lin<span class="q">q</span>ore</span></a>
 <button class="burger" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span></button>
 <nav class="nav" id="nav" aria-label="Main">
 {nav_a("", "Home", "home") if path else '<a href="./" aria-current="page">Home</a>'}
@@ -219,12 +219,12 @@ def page(path, title, desc, body, schemas=(), cur=""):
 </nav></div></header>'''
     footer = f'''<footer class="ftr"><div class="wrap">
 <div class="cols">
-<div><a class="brand" href="{rel or './'}">{LOGO}<span>Nexwire</span></a><p>Engineering and software for connected products: embedded systems, IoT platforms, web applications and mobile apps.</p></div>
+<div><a class="brand" href="{rel or './'}">{LOGO}<span class="wm">Lin<span class="q">q</span>ore</span></a><p>Engineering and software for connected products: embedded systems, IoT platforms, web applications and mobile apps.</p></div>
 <div><h2 class="fh">Services</h2><ul>{"".join(f'<li><a href="{rel}{s["slug"]}/">{e(s["nav"])}</a></li>' for s in SERVICES)}</ul></div>
 <div><h2 class="fh">Company</h2><ul><li><a href="{rel}projects/">Projects</a></li><li><a href="{rel}about/">About us</a></li><li><a href="{rel}contact/">Contact</a></li><li><a href="{rel}privacy/">Privacy policy</a></li><li><a href="{rel}terms/">Terms of use</a></li></ul></div>
 <div><h2 class="fh">Contact</h2><ul><li><a href="tel:{TEL}">{e(PHONE)}</a></li><li><a href="{WA}" target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li><a href="{rel}contact/">Send a request</a></li><li>{e(C["city"])}</li></ul></div>
 </div>
-<div class="bot"><span>&copy; <span id="yr">2026</span> Nexwire. All rights reserved.</span><span>Digital solutions &middot; {e(C["city"])}</span></div>
+<div class="bot"><span>&copy; <span id="yr">2026</span> Linqore. All rights reserved.</span><span>Digital solutions &middot; {e(C["city"])}</span></div>
 </div></footer>
 <a class="wa-fab" href="{WA}" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">{WAICON}<span>WhatsApp</span></a>'''
     doc = f'''<!doctype html>
@@ -239,11 +239,12 @@ def page(path, title, desc, body, schemas=(), cur=""):
 <link rel="canonical" href="{url}">
 <meta name="theme-color" content="#0B1426">
 <meta name="format-detection" content="telephone=no">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Nexwire"><meta property="og:locale" content="en_PK">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Linqore"><meta property="og:locale" content="en_PK">
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)}"><meta name="twitter:description" content="{e(desc)}"><meta name="twitter:image" content="{BASE}og-image.png">
 <link rel="icon" href="{FAVICON}">
+<link rel="apple-touch-icon" href="{rel}assets/apple-touch-icon.png">
 <link rel="preload" href="{rel}fonts/plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{rel}assets/site.css">
 <script src="{rel}assets/site.js"></script>
@@ -347,14 +348,14 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 <section class="sec dark"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
 
 <section class="sec"><div class="wrap">
-<div class="sec-h c" data-rv><span class="kick">Why Nexwire</span><h2>How we deliver dependable systems</h2></div>
+<div class="sec-h c" data-rv><span class="kick">Why Linqore</span><h2>How we deliver dependable systems</h2></div>
 <div class="cards">{"".join(f'<div class="card" data-rv><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(A["about"]["values"], ["sim", "layers", "doc"]))}</div>
 </div></section>
 {cta_band("")}'''
 home = home.replace('<div class="btns" style="margin-top:32px"></div>\n', "")
-pages.append(page("", "Nexwire | Embedded Systems, IoT, Web and Mobile App Development",
-    "Nexwire designs, builds and supports embedded systems, IoT platforms, web applications and mobile apps, engineered together as one system. Based in Islamabad.",
-    home, [dict(ORG, **{"@context": "https://schema.org"}), {"@context": "https://schema.org", "@type": "WebSite", "name": "Nexwire", "url": BASE}], "home"))
+pages.append(page("", "Linqore | Embedded Systems, IoT, Web and Mobile App Development",
+    "Linqore designs, builds and supports embedded systems, IoT platforms, web applications and mobile apps, engineered together as one system. Based in Islamabad.",
+    home, [dict(ORG, **{"@context": "https://schema.org"}), {"@context": "https://schema.org", "@type": "WebSite", "name": "Linqore", "url": BASE}], "home"))
 
 # ---------------------------------------------------------------- SERVICES overview
 svc = phero("Services", "Engineering services for connected products", A["services"]["sub"], [("Home", ""), ("Services", "services/")], "services") + f'''
@@ -371,8 +372,8 @@ svc = phero("Services", "Engineering services for connected products", A["servic
 <div class="process">{"".join(f'<div class="step" data-rv><div class="n">{ICON[pipe_icons[i]]}</div><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p><span class="m">{e(p["m"].replace(chr(183), "·"))}</span></div>' for i, p in enumerate(A["pipeline"]))}</div>
 </div></section>
 {cta_band("../")}'''
-pages.append(page("services/", "Services: Web, Embedded, IoT and Mobile Apps | Nexwire",
-    "Nexwire services: web development, embedded firmware, IoT connectivity and cloud, mobile apps and dashboards, simulation, integration and support.",
+pages.append(page("services/", "Services: Web, Embedded, IoT and Mobile Apps | Linqore",
+    "Linqore services: web development, embedded firmware, IoT connectivity and cloud, mobile apps and dashboards, simulation, integration and support.",
     svc, [crumbs_ld([("Home", ""), ("Services", "services/")])], "services"))
 
 # ---------------------------------------------------------------- SERVICE detail pages
@@ -394,7 +395,7 @@ for s in SERVICES:
     body = body.replace('<div class="btns" style="margin-top:24px"></div>', '<div class="sp"></div>')
     pages.append(page(s["slug"] + "/", s["title"], s["desc"], body, [
         {"@context": "https://schema.org", "@type": "Service", "name": s["nav"], "serviceType": s["nav"], "description": s["desc"],
-         "provider": {"@id": BASE + "#org", "@type": "ProfessionalService", "name": "Nexwire", "url": BASE},
+         "provider": {"@id": BASE + "#org", "@type": "ProfessionalService", "name": "Linqore", "url": BASE},
          "areaServed": {"@type": "Country", "name": "Pakistan"}, "url": BASE + s["slug"] + "/"},
         faq_ld(s["faq"]), crumbs_ld(trail)], s["slug"]))
 
@@ -410,8 +411,8 @@ proj = phero("Projects", "Our work, from the device to the app", A["projects"]["
 <div class="pgrid">{"".join(proj_card(p, "../") for p in A["projects"]["items"])}</div>
 </div></section>
 {cta_band("../", "Need a system like these?", "We can adapt any of these solutions to your site, budget and timeline.")}'''
-pages.append(page("projects/", "Projects: Embedded, IoT and AI Systems | Nexwire",
-    "Embedded and IoT projects by Nexwire: fingerprint attendance, RFID/NFC, smart plug, remote power monitoring, solar fault detection, computer vision and health monitoring.",
+pages.append(page("projects/", "Projects: Embedded, IoT and AI Systems | Linqore",
+    "Embedded and IoT projects by Linqore: fingerprint attendance, RFID/NFC, smart plug, remote power monitoring, solar fault detection, computer vision and health monitoring.",
     proj, [crumbs_ld([("Home", ""), ("Projects", "projects/")]),
            {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
                {"@type": "ListItem", "position": i + 1, "name": p["t"]} for i, p in enumerate(A["projects"]["items"])]}], "projects"))
@@ -435,7 +436,7 @@ about = phero("About", "One team, accountable for the whole system", AB["intro"]
 </div></section>
 {cta_band("../")}'''
 about = about.replace('class="cards" style="grid-template-columns:1fr"', 'class="cards one"')
-pages.append(page("about/", "About Nexwire: Engineering and Software Company in Islamabad",
+pages.append(page("about/", "About Linqore: Engineering and Software Company in Islamabad",
     AB["intro"], about, [crumbs_ld([("Home", ""), ("About", "about/")])], "about"))
 
 # ---------------------------------------------------------------- CONTACT
@@ -463,8 +464,8 @@ contact = phero("Contact", "Tell us about your project", A["request"]["sub"], [(
 </aside>
 </div></section>
 <section class="sec alt"><div class="wrap"><div class="sec-h c" data-rv><span class="kick">FAQ</span><h2>{e(A["faq"]["title"])}</h2></div>{faq_html(faq_items)}</div></section>'''
-pages.append(page("contact/", "Contact Nexwire: Request a Quotation",
-    "Request a quotation from Nexwire for websites, embedded systems, IoT solutions or mobile apps. Reply by WhatsApp, phone or email.",
+pages.append(page("contact/", "Contact Linqore: Request a Quotation",
+    "Request a quotation from Linqore for websites, embedded systems, IoT solutions or mobile apps. Reply by WhatsApp, phone or email.",
     contact, [crumbs_ld([("Home", ""), ("Contact", "contact/")]), faq_ld(faq_items)], "contact"))
 
 # ---------------------------------------------------------------- LEGAL
@@ -473,11 +474,11 @@ for d in A["legal"]["docs"]:
     secs = "".join(f'<h2>{e(x["t"])}</h2><p>{e(x["b"].replace("in the Contact section", "on our Contact page"))}</p>' for x in d["sections"])
     body = phero("Legal", d["title"], "How this website works and how we handle your information.", [("Home", ""), (d["title"], slug)], "legal") + \
         f'<section class="sec"><div class="wrap legal"><p class="upd">Last updated {e(A["legal"]["updated"])}</p>{secs}</div></section>'
-    pages.append(page(slug, f'{d["title"]} | Nexwire', f'{d["title"]} for the Nexwire website.', body,
+    pages.append(page(slug, f'{d["title"]} | Linqore', f'{d["title"]} for the Linqore website.', body,
                       [crumbs_ld([("Home", ""), (d["title"], slug)])], d["id"]))
 
 # ---------------------------------------------------------------- 404 (served from any depth, so absolute paths)
-nf = page("404-tmp/", "Page not found | Nexwire", "This page does not exist.",
+nf = page("404-tmp/", "Page not found | Linqore", "This page does not exist.",
           f'<section class="phero"><div class="grid-bg"></div><div class="wrap"><div><h1>Page not found</h1><p class="lead">The page you are looking for does not exist or has moved.</p><div class="btns" style="margin-top:28px"></div><p><a class="btn btn-p" href="{BASE}">Back to home {ICON["arr"]}</a></p></div></div></section>')
 src = (ROOT / "404-tmp" / "index.html").read_text().replace('href="../', f'href="{BASE}').replace('src="../', f'src="{BASE}')
 src = src.replace('<div class="btns" style="margin-top:28px"></div>', "").replace(f'<link rel="canonical" href="{BASE}404-tmp/">', '<meta name="robots" content="noindex">')

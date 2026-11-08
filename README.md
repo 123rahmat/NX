@@ -1,7 +1,7 @@
 # Nexwire website
 
 Static multi-page site published by GitHub Actions to GitHub Pages:
-https://123rahmat.github.io/NX/
+https://linqore.com/
 
 ## Structure
 - `scripts/content.json`: all text (services, projects, FAQ, legal). Edit content here.

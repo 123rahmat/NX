@@ -1,4 +1,4 @@
-/* Nexwire site script: navigation, hero canvas, reveals, filters, contact form. */
+/* Linqore site script: navigation, hero canvas, reveals, filters, contact form. */
 (function () {
   'use strict';
   var doc = document, root = doc.documentElement;

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /scripts/
-Sitemap: https://123rahmat.github.io/NX/sitemap.xml
+Sitemap: https://linqore.com/sitemap.xml
