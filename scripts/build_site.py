@@ -165,6 +165,10 @@ def art(kind):
      "projects": '<g stroke="currentColor" stroke-width="1.6"><rect x="30" y="40" width="260" height="160" rx="14"/><path d="M30 80h260"/><circle cx="52" cy="60" r="5"/><circle cx="70" cy="60" r="5"/><path class="a-draw" stroke="#22D3EE" stroke-width="2.4" d="M50 170l40-30 30 18 40-50 40 26 50-40"/></g>',
      "about": '<g stroke="currentColor" stroke-width="1.6"><circle cx="160" cy="120" r="80"/><circle cx="160" cy="120" r="50" stroke="#22D3EE"/><circle cx="160" cy="120" r="8" fill="#22D3EE"/><circle cx="240" cy="120" r="6" fill="currentColor"/><circle cx="104" cy="64" r="6" fill="currentColor"/><circle cx="110" cy="166" r="6" fill="currentColor"/></g>',
      "contact": '<g stroke="currentColor" stroke-width="1.6"><rect x="40" y="60" width="240" height="140" rx="14"/><path d="m44 66 116 80 116-80" stroke="#22D3EE"/><circle class="a-pulse" cx="270" cy="60" r="16" fill="#0F7A43" stroke="none"/></g>',
+     "web-development": '<g stroke="currentColor" stroke-width="1.6"><rect x="20" y="36" width="280" height="176" rx="12"/><path d="M20 68h280"/><circle cx="40" cy="52" r="5"/><circle cx="58" cy="52" r="5"/><circle cx="76" cy="52" r="5"/><rect x="40" y="88" width="120" height="14" rx="4" fill="rgba(143,180,255,.25)" stroke="none"/><rect x="40" y="112" width="90" height="8" rx="4" fill="rgba(143,180,255,.15)" stroke="none"/><rect class="a-pulse" x="40" y="140" width="70" height="26" rx="6" stroke="#22D3EE"/><rect x="180" y="88" width="100" height="100" rx="8" stroke="#22D3EE"/><path class="a-draw" stroke="#22D3EE" stroke-width="2.2" d="M192 170l20-24 18 12 26-34"/></g>',
+     "embedded-systems": '<g stroke="currentColor" stroke-width="1.6"><rect x="100" y="60" width="120" height="120" rx="12"/><rect x="128" y="88" width="64" height="64" rx="6" stroke="#22D3EE"/>' + "".join(f'<path d="M{120+i*20} 60V36M{120+i*20} 180v24M100 {80+i*20}H76M220 {80+i*20}h24"/>' for i in range(5)) + '<circle class="a-blink" cx="160" cy="120" r="8" fill="#22D3EE" stroke="none"/><path class="a-dash" d="M76 100H30M244 140h46" stroke="#22D3EE"/></g>',
+     "iot-solutions": '<g stroke="currentColor" stroke-width="1.6"><path d="M118 92a34 34 0 0 1 66-10 26 26 0 0 1 18 50H122a22 22 0 0 1-4-40z" stroke="#22D3EE"/><rect x="34" y="180" width="44" height="36" rx="6"/><rect x="138" y="190" width="44" height="36" rx="6"/><rect x="242" y="180" width="44" height="36" rx="6"/><path class="a-dash" d="M56 180l70-48M160 190v-58M264 180l-70-48"/><circle class="a-ring" cx="160" cy="108" r="10" stroke="#22D3EE"/></g>',
+     "mobile-apps": '<g stroke="currentColor" stroke-width="1.6"><rect x="104" y="20" width="112" height="204" rx="18"/><path d="M146 34h28"/><rect x="118" y="54" width="84" height="54" rx="6" stroke="#22D3EE"/><path class="a-draw" stroke="#22D3EE" stroke-width="2.2" d="M124 98l16-14 14 8 20-22 22 12"/><rect x="118" y="120" width="84" height="22" rx="6"/><rect x="118" y="150" width="84" height="22" rx="6"/><circle class="a-pulse" cx="190" cy="131" r="5" fill="#16A34A" stroke="none"/><circle cx="190" cy="161" r="5" fill="#D97706" stroke="none"/><rect x="132" y="190" width="56" height="18" rx="9" fill="#1D5FD6" stroke="none"/></g>',
      "legal": '<g stroke="currentColor" stroke-width="1.6"><path d="M160 30 90 58v56c0 44 30 76 70 92 40-16 70-48 70-92V58z"/><path d="m130 118 22 22 40-44" stroke="#22D3EE" stroke-width="2.4"/></g>',
     }[kind]
     return common + body + "</svg>"
@@ -279,9 +283,9 @@ def proj_card(p, rel):
             f'<div class="pb"><div class="cat">{e(cat)}{yr}</div><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p>{tags(p["tags"][:5])}</div></article>')
 
 
-def cta_band(rel, title="Have a project in mind?", text="Tell us what you need. We reply with a clear scope, timeline and quotation."):
+def cta_band(rel, title="Ready to build something that works in the real world?", text="Share your idea or requirement. We will reply with a clear scope, timeline and quotation, with no obligation."):
     return f'''<section class="sec"><div class="wrap"><div class="cta-band" data-rv><div><h2>{e(title)}</h2><p>{e(text)}</p></div>
-<div class="btns"><a class="btn btn-l" href="{rel}contact/">Request a quotation {ICON["arr"]}</a><a class="btn btn-wa" href="{WA}" target="_blank" rel="noopener noreferrer">{WAICON} WhatsApp</a></div></div></div></section>'''
+<div class="btns"><a class="btn btn-l" href="{rel}contact/">Get a quotation {ICON["arr"]}</a><a class="btn btn-wa" href="{WA}" target="_blank" rel="noopener noreferrer">{WAICON} WhatsApp</a></div></div></div></section>'''
 
 
 def faq_html(items):
@@ -293,39 +297,48 @@ pages = []
 # ---------------------------------------------------------------- HOME
 H = A["hero"]
 pipe_icons = ["sim", "chip", "wifi", "layers"]
+CYCLE = '''<figure class="cycle" aria-label="Our work cycle: simulate, firmware, connect, monitor">
+<svg class="cy-ring" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="cyg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><circle class="trk" cx="200" cy="200" r="130"/><circle class="flw" cx="200" cy="200" r="130"/><circle class="in" cx="200" cy="200" r="84"/></svg>
+<div class="cy-orbit" aria-hidden="true"><span></span></div>
+<div class="cy-hub"><span class="cy-logo">{LOGO}</span><b>Your product</b><small>One team &middot; one scope</small></div>
+{STAGES}
+<figcaption class="sr">We simulate the system, write the firmware, connect devices to the cloud and monitor them with dashboards and apps.</figcaption>
+</figure>
+'''
+STAGES = "".join(
+    f'<div class="cy-st s{i+1}"><span class="cy-ic">{ICON[pipe_icons[i]]}</span><span class="cy-tx"><small>0{i+1}</small><b>{e(p["t"])}</b><em>{e(p["m"].replace(chr(183), "·").split(" · ")[0])}</em></span></div>'
+    for i, p in enumerate(A["pipeline"]))
+CYCLE = CYCLE.replace("{LOGO}", LOGO).replace("{STAGES}", STAGES)
+TECH = ["ESP32", "STM32", "Arduino", "Raspberry Pi", "MQTT", "HTTP/HTTPS", "Wi-Fi", "GSM / LTE", "Bluetooth LE", "Modbus",
+        "RS-485", "CAN", "MATLAB/Simulink", "Proteus", "Python", "PyTorch", "Android", "iOS", "REST APIs", "TLS"]
+MARQ = '<section class="marq" aria-label="Technologies we work with"><div class="marq-in">' + \
+    "".join(f"<span>{e(t)}</span>" for t in TECH) + "".join(f'<span aria-hidden="true">{e(t)}</span>' for t in TECH) + "</div></section>"
 home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
 <div>
 <span class="eyebrow">{e(H["eyebrow"].replace(chr(183), "·"))}</span>
-<h1>Engineering and software for <span class="grad">connected products.</span></h1>
+<h1>From device to dashboard, <span class="grad">engineered as one system.</span></h1>
 <p class="lead">{e(H["lead"])}</p>
 <div class="btns"><a class="btn btn-p" href="contact/">{e(H["cta1"])} {ICON["arr"]}</a><a class="btn btn-g" href="services/">{e(H["cta2"])}</a></div>
 <ul class="checks">{"".join(f"<li>{ICON['check']}{e(x)}</li>" for x in H["points"])}</ul>
 </div>
-<div class="dash" aria-hidden="true">
-<div class="dash-h"><i></i><i></i><i></i><b>Operations overview</b><span class="live">LIVE</span></div>
-<div class="kpis"><div><small>Devices online</small><b>128</b></div><div><small>Messages / min</small><b>2,418</b></div><div><small>Open alerts</small><b>3</b></div></div>
-<div class="chart"><svg viewBox="0 0 400 120" preserveAspectRatio="none"><defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B8DEF" stop-opacity=".35"/><stop offset="1" stop-color="#5B8DEF" stop-opacity="0"/></linearGradient></defs>
-<path class="gl" d="M0 30h400M0 60h400M0 90h400"/><path class="ar" d="M0 95 40 80 80 86 120 60 160 66 200 40 240 52 280 30 320 44 360 22 400 30V120H0z"/><path class="ln" d="M0 95 40 80 80 86 120 60 160 66 200 40 240 52 280 30 320 44 360 22 400 30"/></svg></div>
-<ul class="rows"><li><span class="dot"></span>Pump controller A<span>Running</span></li><li><span class="dot"></span>Cold room sensor<span>3.8 °C</span></li><li><span class="dot w"></span>Gateway 02<span>Weak signal</span></li></ul>
-</div>
-</div></section>
-
+{CYCLE}</div></section>
+{MARQ}
 <section class="sec"><div class="wrap">
-<div class="sec-h c" data-rv><span class="kick">What we do</span><h2>{e(A["services"]["title"])}</h2><p>{e(A["services"]["sub"])}</p></div>
+<div class="sec-h c" data-rv><span class="kick">Services</span><h2>{e(A["services"]["title"])}</h2><p>{e(A["services"]["sub"])}</p></div>
 <div class="cards">{"".join(f'<a class="card" href="{SVC_LINK[s["t"]]}/" data-rv><div class="ico-b">{ICON[SVC_ICON[s["t"]]]}</div><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p><span class="more">Learn more {ICON["arr"]}</span></a>' for s in A["services"]["items"])}</div>
 </div></section>
 
 <section class="sec dark"><div class="wrap">
-<div class="sec-h" data-rv><span class="kick">How it works</span><h2>One cycle, from model to monitored system</h2><p>Firmware, connection and app are designed together, so they work together.</p></div>
+<div class="sec-h" data-rv><span class="kick">How it works</span><h2>Our work cycle: from model to monitored system</h2><p>Every project follows the same proven cycle. Firmware, connectivity and applications are designed together, so they work together.</p></div>
 <div class="process">{"".join(f'<div class="step" data-rv><div class="n">{ICON[pipe_icons[i]]}</div><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p><span class="m">{e(p["m"].replace(chr(183), "·"))}</span></div>' for i, p in enumerate(A["pipeline"]))}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-<div class="stats" data-rv><div><b>7</b><span>Completed projects</span></div><div><b>6</b><span>Engineering services</span></div><div><b>4</b><span>Connectivity links</span></div><div><b>1</b><span>Team, one scope</span></div></div>
+<div class="stats" data-rv><div><b>7</b><span>Systems delivered</span></div><div><b>6</b><span>Engineering disciplines</span></div><div><b>4</b><span>Connectivity options</span></div><div><b>100%</b><span>Written scope before work starts</span></div></div>
 </div></section>
 
 <section class="sec alt"><div class="wrap">
-<div class="sec-h" data-rv><span class="kick">Selected work</span><h2>{e(A["projects"]["title"])}</h2><p>{e(A["projects"]["sub"])}</p></div>
+<div class="sec-h" data-rv><span class="kick">Selected projects</span><h2>{e(A["projects"]["title"])}</h2><p>{e(A["projects"]["sub"])}</p></div>
 <div class="pgrid">{"".join(proj_card(PROJ[k], "") for k in ["fingerprint", "power", "solar"])}</div>
 <div class="btns" style="margin-top:32px"></div>
 <p class="sec-more" data-rv><a class="btn btn-o" href="projects/">See all projects {ICON["arr"]}</a></p>
@@ -334,22 +347,23 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 <section class="sec dark"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
 
 <section class="sec"><div class="wrap">
-<div class="sec-h c" data-rv><span class="kick">Why Nexwire</span><h2>Built to be dependable</h2></div>
+<div class="sec-h c" data-rv><span class="kick">Why Nexwire</span><h2>How we deliver dependable systems</h2></div>
 <div class="cards">{"".join(f'<div class="card" data-rv><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(A["about"]["values"], ["sim", "layers", "doc"]))}</div>
 </div></section>
 {cta_band("")}'''
 home = home.replace('<div class="btns" style="margin-top:32px"></div>\n', "")
 pages.append(page("", "Nexwire | Embedded Systems, IoT, Web and Mobile App Development",
-    "Nexwire designs and builds embedded systems, IoT platforms, web applications and mobile apps in Islamabad, from first specification to long-term support.",
+    "Nexwire designs, builds and supports embedded systems, IoT platforms, web applications and mobile apps, engineered together as one system. Based in Islamabad.",
     home, [dict(ORG, **{"@context": "https://schema.org"}), {"@context": "https://schema.org", "@type": "WebSite", "name": "Nexwire", "url": BASE}], "home"))
 
 # ---------------------------------------------------------------- SERVICES overview
-svc = phero("Services", "Engineering across hardware and software", A["services"]["sub"], [("Home", ""), ("Services", "services/")], "services") + f'''
+svc = phero("Services", "Engineering services for connected products", A["services"]["sub"], [("Home", ""), ("Services", "services/")], "services") + f'''
 <section class="sec"><div class="wrap">
+<div class="sec-h" data-rv><span class="kick">Core services</span><h2>Choose the service you need</h2></div>
 <div class="cards two">{"".join(f'<a class="card" href="../{s["slug"]}/" data-rv><div class="ico-b">{ICON[s["icon"]]}</div><h3>{e(s["nav"])}</h3><p>{e(s["intro"])}</p>{tags(s["tech"][:5])}<span class="more">Explore {e(lc(s["nav"]))} {ICON["arr"]}</span></a>' for s in SERVICES)}</div>
 </div></section>
 <section class="sec alt"><div class="wrap">
-<div class="sec-h" data-rv><span class="kick">Everything we offer</span><h2>Six services, one team</h2></div>
+<div class="sec-h" data-rv><span class="kick">Full capability</span><h2>Six disciplines, one accountable team</h2></div>
 <div class="cards">{"".join(f'<div class="card" data-rv><div class="ico-b">{ICON[SVC_ICON[s["t"]]]}</div><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p>{tags(s["tags"])}</div>' for s in A["services"]["items"])}</div>
 </div></section>
 <section class="sec dark"><div class="wrap">
@@ -364,7 +378,7 @@ pages.append(page("services/", "Services: Web, Embedded, IoT and Mobile Apps | N
 # ---------------------------------------------------------------- SERVICE detail pages
 for s in SERVICES:
     trail = [("Home", ""), ("Services", "services/"), (s["nav"], s["slug"] + "/")]
-    body = phero(s["nav"], s["h1"], s["intro"], trail, "services") + f'''
+    body = phero(s["nav"], s["h1"], s["intro"], trail, s["slug"]) + f'''
 <section class="sec"><div class="wrap split">
 <div data-rv><span class="kick">What we build</span><h2 class="h2">{e(s["nav"])} services</h2>
 <ul class="list">{"".join(f'<li>{ICON["check"]}<div><b>{e(a)}</b><span>{e(b)}</span></div></li>' for a, b in s["build"])}</ul></div>
@@ -391,10 +405,11 @@ for p in A["projects"]["items"]:
         cats.append(p["cat"])
 proj = phero("Projects", "Our work, from the device to the app", A["projects"]["sub"], [("Home", ""), ("Projects", "projects/")], "projects") + f'''
 <section class="sec"><div class="wrap">
+<h2 class="sr">All projects</h2>
 <div class="filters" role="group" aria-label="Filter projects"><button type="button" data-f="all" aria-pressed="true">All</button>{"".join(f'<button type="button" data-f="{e(c)}" aria-pressed="false">{e(c)}</button>' for c in cats)}</div>
 <div class="pgrid">{"".join(proj_card(p, "../") for p in A["projects"]["items"])}</div>
 </div></section>
-{cta_band("../", "Want something similar?", "We can adapt any of these systems to your site, budget and timeline.")}'''
+{cta_band("../", "Need a system like these?", "We can adapt any of these solutions to your site, budget and timeline.")}'''
 pages.append(page("projects/", "Projects: Embedded, IoT and AI Systems | Nexwire",
     "Embedded and IoT projects by Nexwire: fingerprint attendance, RFID/NFC, smart plug, remote power monitoring, solar fault detection, computer vision and health monitoring.",
     proj, [crumbs_ld([("Home", ""), ("Projects", "projects/")]),
@@ -405,7 +420,7 @@ pages.append(page("projects/", "Projects: Embedded, IoT and AI Systems | Nexwire
 AB, CM = A["about"], A["comms"]
 link_icons = ["wifi", "signal", "bt", "cable"]
 story = "".join(f"<p>{e(x)}</p>" for x in AB["story"].strip().split("\n") if x.strip())
-about = phero("About", "One team for the whole connected system", AB["intro"], [("Home", ""), ("About", "about/")], "about") + f'''
+about = phero("About", "One team, accountable for the whole system", AB["intro"], [("Home", ""), ("About", "about/")], "about") + f'''
 <section class="sec"><div class="wrap split">
 <div data-rv><span class="kick">Our story</span><h2 class="h2">Devices, connectivity and software that work as one</h2><div class="prose">{story}</div></div>
 <div class="cards" style="grid-template-columns:1fr" data-rv>{"".join(f'<div class="card"><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(AB["values"], ["sim", "layers", "doc"]))}</div>
@@ -415,7 +430,7 @@ about = phero("About", "One team for the whole connected system", AB["intro"], [
 <div class="cards four">{"".join(f'<div class="card" data-rv><div class="ico-b">{ICON[link_icons[i]]}</div><h3>{e(l["t"])}</h3><p>{e(l["d"])}</p>{tags(l["tags"])}</div>' for i, l in enumerate(CM["links"]))}</div>
 </div></section>
 <section class="sec"><div class="wrap">
-<div class="sec-h" data-rv><span class="kick">Protocols</span><h2>We speak your systems' language</h2></div>
+<div class="sec-h" data-rv><span class="kick">Protocols</span><h2>Industry-standard protocols, securely implemented</h2></div>
 <div class="proto" data-rv>{"".join(f'<div><b>{e(p["t"])}</b><p>{e(p["d"])}</p></div>' for p in CM["protocols"])}</div>
 </div></section>
 {cta_band("../")}'''
@@ -426,7 +441,7 @@ pages.append(page("about/", "About Nexwire: Engineering and Software Company in 
 # ---------------------------------------------------------------- CONTACT
 svc_opts = [s["t"] for s in A["services"]["items"]] + [s["nav"] for s in SERVICES if s["nav"] not in [x["t"] for x in A["services"]["items"]]]
 faq_items = [(f["q"], f["a"].replace("Send the request form on this page.", "Send the request form above.")) for f in A["faq"]["items"]]
-contact = phero("Contact", "Request a project", A["request"]["sub"], [("Home", ""), ("Contact", "contact/")], "contact") + f'''
+contact = phero("Contact", "Tell us about your project", A["request"]["sub"], [("Home", ""), ("Contact", "contact/")], "contact") + f'''
 <section class="sec"><div class="wrap contact-grid">
 <form class="form" id="quote" data-endpoint="https://formsubmit.co/ajax/{quote(FORM_TO)}" novalidate>
 <div class="fgrid">
@@ -438,7 +453,7 @@ contact = phero("Contact", "Request a project", A["request"]["sub"], [("Home", "
 <div class="f full"><label for="f-details">Project details</label><textarea id="f-details" name="details" maxlength="2000" required placeholder="What should it do? Who will use it? Any deadline?"></textarea></div>
 <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="_honey" tabindex="-1" autocomplete="off"></div>
 </div>
-<div class="row"><button class="btn btn-p" type="submit">Send request</button><span class="note">We reply with scope, timeline and price.</span></div>
+<div class="row"><button class="btn btn-p" type="submit">Send request</button><span class="note">No obligation. Your details are used only to reply to you.</span></div>
 <div class="msg" id="form-msg" role="status" aria-live="polite" hidden></div>
 </form>
 <aside class="side">

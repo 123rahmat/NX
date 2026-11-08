@@ -12,20 +12,20 @@
   "reply": ""
  },
  "hero": {
-  "eyebrow": "Digital solutions · Islamabad",
+  "eyebrow": "Embedded · IoT · Web · Mobile — Islamabad",
   "title": "Engineering and software for connected products.",
-  "lead": "We design and deliver embedded systems, IoT platforms, web applications and mobile apps for organisations that need dependable technology, from the first specification to long-term support.",
-  "cta1": "Request a quotation",
-  "cta2": "View services",
+  "lead": "Nexwire designs, builds and supports connected products end to end: embedded firmware, IoT connectivity, web platforms and mobile apps, engineered together so your devices, data and people work as one system.",
+  "cta1": "Get a quotation",
+  "cta2": "Explore our services",
   "points": [
    "Simulation before hardware",
-   "One team, one scope",
-   "Support after delivery"
+   "One accountable team",
+   "Support after launch"
   ]
  },
  "quote": {
   "text": "We would rather tell you a project is simple than sell you a complicated one.",
-  "by": "Our approach to every project"
+  "by": "The principle behind every project"
  },
  "pipeline": [
   {
@@ -54,8 +54,8 @@
   }
  ],
  "services": {
-  "title": "Our services",
-  "sub": "Engineering across hardware and software, delivered by one team under one scope.",
+  "title": "What we build",
+  "sub": "Hardware and software engineering under one roof, delivered against a single written scope.",
   "items": [
    {
     "t": "Websites and web platforms",
@@ -120,7 +120,7 @@
  },
  "request": {
   "title": "Request a project",
-  "sub": "Describe your requirement and our team will reply by WhatsApp, phone or email with a scope, timeline and quotation.",
+  "sub": "Share your requirements and we will come back with a written scope, a realistic timeline and an itemised quotation. No obligation.",
   "budgetHint": "e.g. a rough range"
  },
  "show": {
@@ -128,26 +128,26 @@
  },
  "about": {
   "title": "About us",
-  "intro": "Nexwire is an engineering and software company based in Islamabad. We build the systems organisations depend on, from firmware on a device to the web platform and application their teams use.",
-  "story": "Most organisations do not need an isolated tool. They need devices, connectivity, platforms and applications that work together as one system.\nWe take responsibility for that whole system. We define the requirement, model it where hardware is involved, build and test the software, and deliver a platform your team can operate.\nEvery engagement starts with a written scope and quotation, and ends with a documented, working system and a support arrangement.\n",
+  "intro": "Nexwire is an engineering and software company based in Islamabad. We take ownership of the complete connected system, from the firmware on the device to the platform and apps your team relies on every day.",
+  "story": "Most organisations do not need another isolated tool. They need devices, connectivity, platforms and applications that work together reliably as one system.\nThat is the responsibility we take on. We define the requirement, model the system where hardware is involved, build and test the software, and hand over a platform your team can operate with confidence.\nEvery engagement begins with a written scope and quotation, and ends with a documented, working system and an agreed support arrangement.\n",
   "values": [
    {
-    "t": "Test before building",
-    "d": "Simulation catches mistakes while they are still cheap to fix."
+    "t": "Test before we build",
+    "d": "We simulate hardware and control logic first, so design mistakes are caught while they are still cheap to fix."
    },
    {
-    "t": "One cycle, one team",
-    "d": "Firmware, connection and app are designed together, so they work together."
+    "t": "One team, one system",
+    "d": "Firmware, connectivity and applications are designed together by one team, so every part fits and nothing falls between suppliers."
    },
    {
-    "t": "Clear scope and price",
-    "d": "You know what you get, when, and what it costs before work starts."
+    "t": "Clear scope, clear price",
+    "d": "You know exactly what will be delivered, when, and at what cost before any work begins."
    }
   ]
  },
  "projects": {
   "title": "Projects",
-  "sub": "Systems we have designed and built, from firmware on the device to the application that controls it.",
+  "sub": "A selection of systems we have designed and delivered, from firmware on the device to the application that controls it.",
   "items": [
    {
     "t": "Smart attendance system",
@@ -255,24 +255,24 @@
   "title": "Common questions",
   "items": [
    {
-    "q": "How do I get a quote?",
-    "a": "Send the request form on this page. It goes straight to our team, and we reply with scope, timeline and price."
+    "q": "How do I get a quotation?",
+    "a": "Send the request form on this page or message us on WhatsApp. We review your requirements and reply with a written scope, timeline and itemised price."
    },
    {
-    "q": "Which technologies do you use?",
-    "a": "For devices: ARM Cortex-M (STM32), ESP32, Arduino and Raspberry Pi. For software: web dashboards, Android and iOS apps, cloud APIs and MQTT. Tell us what you already have and we work with it."
+    "q": "Which technologies do you work with?",
+    "a": "For devices: ESP32, STM32 (ARM Cortex-M), Arduino and Raspberry Pi. For software: web platforms, Android and iOS apps, cloud APIs and MQTT. If you already have systems in place, we build on them."
    },
    {
-    "q": "Do I need hardware to start?",
-    "a": "No. Many projects are websites or apps only. If you need a device, we advise on suitable boards and sensors."
+    "q": "Do I need hardware before we start?",
+    "a": "No. Many projects are software only. When a device is needed, we simulate it first and recommend suitable boards and sensors before anything is purchased."
    },
    {
-    "q": "Can I visit the office?",
-    "a": "Our office is in Islamabad. Email or call us first so we can set a time."
+    "q": "Can I visit your office?",
+    "a": "Yes. Our office is in Islamabad. Please call or message us first so we can arrange a time."
    },
    {
-    "q": "What happens after the project is delivered?",
-    "a": "You get the working system and a short manual. Ask about support when you request your quote."
+    "q": "What happens after delivery?",
+    "a": "You receive the working system, documentation and a short user guide. Ongoing maintenance and support can be agreed as part of your quotation."
    }
   ]
  },
