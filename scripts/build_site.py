@@ -11,7 +11,7 @@ from urllib.parse import quote
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 A = json.loads((ROOT / "scripts" / "content.json").read_text())
-BASE = "https://linqore.com/"
+BASE = "https://123rahmat.github.io/NX/"
 C = A["contact"]
 PHONE, TEL = C["phone"], C["phone"].replace(" ", "")
 # Form destination. Replace the email with the FormSubmit alias once activated, to keep the address out of the page.
