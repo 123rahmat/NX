@@ -1,7 +1,11 @@
 {
-  // Cloudflare Workers static site. Build first with: bash scripts/cf-build.sh
-  "name": "velundi",
+  // Cloudflare Workers static site (Worker name must match the dashboard: "nx").
+  "name": "nx",
   "compatibility_date": "2026-11-01",
+  // Wrangler runs this before every deploy, so no dashboard build command is needed.
+  "build": {
+    "command": "bash scripts/cf-build.sh"
+  },
   "assets": {
     "directory": "./public",
     "not_found_handling": "404-page"
