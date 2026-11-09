@@ -461,6 +461,14 @@ a.card:hover .more svg{transform:translateX(4px)}
   .wa-fab span{display:none}
   .btns .btn{flex:1 1 auto}
 }
+/* Short screens (phones in landscape): slimmer header, icon-only WhatsApp button */
+@media (max-height:500px) and (orientation:landscape){
+  :root{--hdr:56px}
+  .hdr .brand img{height:30px}
+  .wa-fab{width:48px;height:48px;padding:0;justify-content:center}
+  .wa-fab span{display:none}
+  .wa-fab svg{width:24px;height:24px}
+}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
