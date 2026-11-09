@@ -129,7 +129,7 @@ p{margin:0;text-wrap:pretty}
 .cy-hub b{color:#fff;font-size:clamp(15px,1.6vw,18px);line-height:1.2}
 .cy-hub small{color:var(--muted-d);font:500 10.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
 .cy-st{position:absolute;z-index:2;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;width:max-content;max-width:35%;padding:11px 14px 11px 11px;border-radius:14px;background:rgba(15,28,54,.92);border:1px solid var(--line-d);box-shadow:0 12px 32px rgba(0,0,0,.35);animation:act 8s linear infinite}
-.cy-st.s1{left:50%;top:17.5%}.cy-st.s2{left:82.5%;top:50%;animation-delay:2s}.cy-st.s3{left:50%;top:82.5%;animation-delay:4s}.cy-st.s4{left:17.5%;top:50%;animation-delay:6s}
+.cy-st.s1{left:50%;top:17.5%}.cy-st.s2{left:auto;right:0;top:50%;transform:translateY(-50%);animation-delay:2s}.cy-st.s3{left:50%;top:82.5%;animation-delay:4s}.cy-st.s4{left:0;top:50%;transform:translateY(-50%);animation-delay:6s}
 .cy-ic{flex:none;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:rgba(59,130,246,.16);color:#8FB4FF;transition:background .3s,color .3s}
 .cy-ic svg{width:22px;height:22px}
 .cy-tx{display:flex;flex-direction:column;line-height:1.25}
@@ -137,6 +137,7 @@ p{margin:0;text-wrap:pretty}
 .cy-tx b{color:#fff;font-size:15px;font-weight:600;line-height:1.2}
 .cy-tx em{font:normal 11.5px var(--mono);color:var(--muted-d);white-space:nowrap}
 @container (max-width:500px){.cy-st{padding:9px 12px 9px 9px;gap:9px}.cy-ic{width:34px;height:34px}.cy-ic svg{width:18px;height:18px}.cy-tx b{font-size:14px}.cy-tx em,.cy-hub small{display:none}.cy-logo svg{width:42px;height:42px}}
+@container (max-width:300px){.cy-hub b{display:none}}
 @container (max-width:400px){.cy-st{padding:7px 9px 7px 7px;gap:7px;border-radius:11px;max-width:37%}.cy-ic{width:28px;height:28px;border-radius:8px}.cy-ic svg{width:15px;height:15px}.cy-tx small{font-size:9px}.cy-tx b{font-size:12.5px}.cy-logo svg{width:34px;height:34px;margin-bottom:4px}.cy-hub b{font-size:13px}.cy-orbit span{width:11px;height:11px;margin:-5.5px 0 0 -5.5px}}
 @keyframes act{0%,20%{border-color:rgba(34,211,238,.75);box-shadow:0 0 0 4px rgba(34,211,238,.12),0 16px 40px rgba(0,0,0,.45)}28%,100%{border-color:var(--line-d);box-shadow:0 12px 32px rgba(0,0,0,.35)}}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -283,7 +284,7 @@ a.card:hover .more svg{transform:translateX(4px)}
 .f{display:flex;flex-direction:column;gap:7px}
 .f.full{grid-column:1/-1}
 .f label{font-weight:600;font-size:13.5px;color:var(--ink);letter-spacing:.005em}
-.f label small{font-weight:400;color:var(--muted)}
+.f label small{font-weight:400;font-size:12.5px;color:var(--muted)}
 .f input,.f select,.f textarea{width:100%;font:15.5px var(--sans);color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:10px;padding:13px 14px;transition:border-color .2s,box-shadow .2s,background .2s}
 .f textarea{min-height:130px;resize:vertical}
 .f ::placeholder{color:#6F82A3}
@@ -397,7 +398,7 @@ a.card:hover .more svg{transform:translateX(4px)}
 
 
 /* Side dots (section navigation) */
-.dots{position:fixed;right:max(8px,env(safe-area-inset-right));top:50%;transform:translateY(-50%);z-index:45;display:flex;flex-direction:column;gap:4px}
+.dots{position:fixed;right:max(calc(var(--gut) / 2),env(safe-area-inset-right));top:50%;transform:translate(50%,-50%);z-index:45;display:flex;flex-direction:column;gap:4px}
 .dots button{position:relative;width:20px;height:20px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center;-webkit-tap-highlight-color:transparent}
 .dots button::before{content:"";width:8px;height:8px;border-radius:50%;border:1.5px solid rgba(143,180,255,.55);transition:background .25s,border-color .25s,transform .25s var(--ease)}
 .dots button:hover::before{border-color:#fff}
@@ -406,7 +407,7 @@ a.card:hover .more svg{transform:translateX(4px)}
 .dots button:hover::after,.dots button:focus-visible::after{opacity:1;visibility:visible;transform:translate(0,-50%)}
 @media (pointer:coarse){.dots{gap:0}.dots button{height:40px}}
 .menu-open .dots{opacity:0;visibility:hidden}
-@media (max-width:767px){.dots{right:max(1px,env(safe-area-inset-right))}.dots button{width:14px}.dots button::before{width:6px;height:6px;border-width:1.25px}.dots button::after{display:none}}
+@media (max-width:767px){.dots button{width:14px}.dots button::before{width:6px;height:6px;border-width:1.25px}.dots button::after{display:none}}
 @media print{.dots{display:none}}
 
 /* Reveal on scroll (only applied by JS to off-screen elements) */
