@@ -29,7 +29,7 @@ def _v(path):
     return hashlib.sha256((ROOT / path).read_bytes()).hexdigest()[:10]
 
 
-V = {k: _v(k) for k in ("assets/site.css", "assets/site.js", "assets/logo.svg", "assets/apple-touch-icon.png")}
+V = {k: _v(k) for k in ("assets/site.css", "assets/site.js", "assets/logo.svg", "assets/apple-touch-icon.png", "assets/favicon-32.png")}
 
 CSP = ("default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; "
        "connect-src https://formsubmit.co; base-uri 'none'; form-action 'none'; object-src 'none'; "
@@ -184,7 +184,7 @@ def art(kind):
 def ld(obj):
     return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False).replace("</", "<\\/") + "</script>"
 
-ORG = {"@type": "ProfessionalService", "@id": BASE + "#org", "name": "Linqore", "url": BASE,
+ORG = {"@type": "ProfessionalService", "@id": BASE + "#org", "name": "Linqore", "url": BASE, "foundingDate": "2025",
        "image": BASE + "og-image.png", "logo": BASE + "og-image.png", "telephone": PHONE,
        "description": "Engineering and software for connected products: embedded systems, IoT platforms, web applications and mobile apps.",
        "address": {"@type": "PostalAddress", "addressLocality": C["city"], "addressCountry": "PK"},
@@ -230,7 +230,7 @@ def page(path, title, desc, body, schemas=(), cur=""):
 <div><h2 class="fh">Company</h2><ul><li><a href="{rel}projects/">Projects</a></li><li><a href="{rel}about/">About us</a></li><li><a href="{rel}contact/">Contact</a></li><li><a href="{rel}privacy/">Privacy policy</a></li><li><a href="{rel}terms/">Terms of use</a></li></ul></div>
 <div><h2 class="fh">Contact</h2><ul><li><a href="tel:{TEL}">{e(PHONE)}</a></li><li><a href="{WA}" target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li><a href="{rel}contact/">Send a request</a></li><li>{e(C["city"])}</li></ul></div>
 </div>
-<div class="bot"><span>&copy; <span id="yr">2026</span> Linqore. All rights reserved.</span><span>Digital solutions &middot; {e(C["city"])}</span></div>
+<div class="bot"><span>&copy; 2025&ndash;<span id="yr">2026</span> Linqore. All rights reserved.</span><span>Digital solutions &middot; {e(C["city"])}</span></div>
 </div></footer>
 <a class="wa-fab" href="{WA}" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">{WAICON}<span>WhatsApp</span></a>'''
     doc = f'''<!doctype html>
@@ -249,7 +249,9 @@ def page(path, title, desc, body, schemas=(), cur=""):
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)}"><meta name="twitter:description" content="{e(desc)}"><meta name="twitter:image" content="{BASE}og-image.png">
-<link rel="icon" href="{FAVICON}">
+<link rel="icon" href="{FAVICON}" type="image/svg+xml">
+<link rel="icon" href="{rel}assets/favicon-32.png?v={V['assets/favicon-32.png']}" sizes="32x32" type="image/png">
+<link rel="manifest" href="{rel}site.webmanifest">
 <link rel="apple-touch-icon" href="{rel}assets/apple-touch-icon.png?v={V['assets/apple-touch-icon.png']}">
 <link rel="preload" href="{rel}fonts/plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{rel}assets/site.css?v={V['assets/site.css']}">
@@ -350,7 +352,7 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 {CYCLE}</div></section>
 {MARQ}
 
-<section class="proof"><div class="wrap"><div class="stats" data-rv>
+<section class="proof" aria-label="Results"><div class="wrap"><div class="stats" data-rv>
 <div><b>7</b><span>Systems delivered, device to app</span></div><div><b>6</b><span>Engineering disciplines in one team</span></div>
 <div><b>4</b><span>Connectivity options: Wi-Fi, GSM, BLE, wired</span></div><div><b>100%</b><span>Written scope before work starts</span></div>
 </div></div></section>
@@ -366,7 +368,7 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 <div class="pgrid">{"".join(proj_card(PROJ[k], "") for k in ["fingerprint", "power", "solar"])}</div>
 </div></section>
 
-<section class="sec alt"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
+<section class="sec alt" aria-label="Our approach"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
 
 {cta_band("", cls="sec")}'''
 pages.append(page("", "Linqore | Embedded Systems, IoT, Web and Mobile App Development",
@@ -453,7 +455,7 @@ pages.append(page("about/", "About Linqore: Engineering and Software Company in 
 svc_opts = [s["t"] for s in A["services"]["items"]] + [s["nav"] for s in SERVICES if s["nav"] not in [x["t"] for x in A["services"]["items"]]]
 faq_items = [(f["q"], f["a"].replace("Send the request form on this page.", "Send the request form above.")) for f in A["faq"]["items"]]
 contact = phero("Contact", "Tell us about your project", A["request"]["sub"], [("Home", ""), ("Contact", "contact/")], "contact") + f'''
-<section class="sec"><div class="wrap contact-grid">
+<section class="sec" aria-label="Project request"><div class="wrap contact-grid">
 <form class="form" id="quote" data-endpoint="https://formsubmit.co/ajax/{quote(FORM_TO)}" novalidate>
 <div class="fgrid">
 <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" maxlength="80" required></div>
@@ -497,6 +499,15 @@ _origin = "https://" + BASE.split("/")[2]
 src = src.replace("script-src 'self'", f"script-src 'self' {_origin}").replace("style-src 'self'", f"style-src 'self' {_origin}").replace("font-src 'self'", f"font-src 'self' {_origin}").replace("img-src 'self' data:", f"img-src 'self' {_origin} data:")
 (ROOT / "404.html").write_text(src)
 (ROOT / "404-tmp" / "index.html").unlink(); (ROOT / "404-tmp").rmdir()
+
+# ---------------------------------------------------------------- web app manifest (Add to Home Screen)
+(ROOT / "site.webmanifest").write_text(json.dumps({
+    "name": "Linqore", "short_name": "Linqore",
+    "description": "Engineering and software for connected products: embedded systems, IoT, web and mobile apps.",
+    "start_url": "./", "scope": "./", "display": "standalone",
+    "background_color": "#0B1426", "theme_color": "#0B1426",
+    "icons": [{"src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png"},
+              {"src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}]}, indent=2) + "\n")
 
 # ---------------------------------------------------------------- sitemap + robots
 pri = {"": "1.0", "services/": "0.9", "contact/": "0.9", "projects/": "0.8", "about/": "0.7", "privacy/": "0.2", "terms/": "0.2"}

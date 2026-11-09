@@ -202,23 +202,27 @@
 
   /* ---------- Side dots: one per section, highlights the section in view ---------- */
   function sectionDots() {
-    var secs = [].slice.call(doc.querySelectorAll('main > section')).filter(function (s) {
-      return s.querySelector('h1, h2') && s.offsetHeight > 0;
+    // Every visible section of the page, plus the footer as a "Bottom" stop.
+    var secs = [].slice.call(doc.querySelectorAll('main > section, body > footer')).filter(function (s) {
+      return s.offsetHeight > 0;
     });
     if (secs.length < 2) return;
     var nav = doc.createElement('nav');
     nav.className = 'dots';
     nav.setAttribute('aria-label', 'Page sections');
     var btns = secs.map(function (sec, i) {
-      var h = sec.querySelector('h1, h2');
-      var label = i === 0 ? 'Top' : (h.textContent || '').replace(/\s+/g, ' ').trim();
+      var h = sec.querySelector('h1, h2, h3');
+      var label = i === 0 ? 'Top' : sec.tagName === 'FOOTER' ? 'Bottom' : (h ? h.textContent : sec.getAttribute('aria-label') || 'Section').replace(/\s+/g, ' ').trim();
       var b = doc.createElement('button');
       b.type = 'button';
       b.setAttribute('aria-label', label);
       b.setAttribute('data-label', label.length > 34 ? label.slice(0, 32) + '…' : label);
+      b.addEventListener('pointerdown', function (e) { b._touch = e.pointerType !== 'mouse'; });
       b.addEventListener('click', function () {
         sec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-        // Briefly show the section name (touch screens have no hover).
+        // Mouse users see the name on hover only; touch gets it briefly after a tap.
+        if (!b._touch) return;
+        b._touch = false;
         btns.forEach(function (x) { x.classList.remove('show'); });
         b.classList.add('show');
         clearTimeout(b._t);

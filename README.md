@@ -18,6 +18,8 @@ Rebuild after any content or design change, then commit:
     python3 scripts/build_site.py
 
 ## Publishing
+Full go-live checklist (GitHub, Cloudflare, form, Google, domain): see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 - **GitHub Pages:** `.github/workflows/pages.yml` runs security checks and publishes public files on every push.
 - **Cloudflare:** `wrangler.jsonc` runs `scripts/cf-build.sh`, which copies only public files to `public/`; `_headers` adds security headers.
 
