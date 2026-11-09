@@ -29,27 +29,27 @@
  },
  "pipeline": [
   {
-   "t": "Simulate",
-   "d": "Model the system and test the control logic on a computer before any parts are bought.",
+   "t": "Simulation",
+   "d": "Model the system and test the control logic on a computer before any hardware is bought.",
    "m": "MATLAB/Simulink · Proteus",
    "wave": true
   },
   {
-   "t": "Firmware",
-   "d": "Write and test the code on the board: sensors, control logic, alerts and low power use.",
+   "t": "Embedded system",
+   "d": "Build and program the device: sensors, control logic, alerts and low power use on the board.",
    "m": "ESP32 · STM32 · Arduino",
    "wave": false
   },
   {
-   "t": "Connect",
-   "d": "Send device data to the cloud and send commands and updates back to the device.",
-   "m": "Wi-Fi · GSM · Bluetooth · Serial · MQTT",
+   "t": "IoT connectivity",
+   "d": "Connect devices securely to the cloud, sending data up and commands and updates back down.",
+   "m": "Wi-Fi · GSM · Bluetooth · MQTT",
    "wave": false
   },
   {
-   "t": "Monitor",
-   "d": "A dashboard and phone app show live data, history and alerts. What you learn feeds the next update.",
-   "m": "Web dashboard · Mobile app",
+   "t": "Data & apps",
+   "d": "Dashboards and mobile apps turn device data into live views, history and alerts for your team.",
+   "m": "Dashboards · Mobile apps",
    "wave": false
   }
  ],

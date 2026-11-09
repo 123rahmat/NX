@@ -303,12 +303,12 @@ pages = []
 # ---------------------------------------------------------------- HOME
 H = A["hero"]
 pipe_icons = ["sim", "chip", "wifi", "layers"]
-CYCLE = '''<figure class="cycle" aria-label="Our work cycle: simulate, firmware, connect, monitor">
+CYCLE = '''<figure class="cycle" aria-label="Our work cycle: simulation, embedded system, IoT connectivity, data and apps">
 <svg class="cy-ring" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="cyg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><circle class="trk" cx="200" cy="200" r="130"/><circle class="flw" cx="200" cy="200" r="130"/><circle class="in" cx="200" cy="200" r="84"/></svg>
 <div class="cy-orbit" aria-hidden="true"><span></span></div>
 <div class="cy-hub"><span class="cy-logo">{LOGO}</span><b>Your product</b><small>One team &middot; one scope</small></div>
 {STAGES}
-<figcaption class="sr">We simulate the system, write the firmware, connect devices to the cloud and monitor them with dashboards and apps.</figcaption>
+<figcaption class="sr">We simulate the system, build the embedded device, connect it through IoT and turn its data into dashboards and apps.</figcaption>
 </figure>
 '''
 STAGES = "".join(
