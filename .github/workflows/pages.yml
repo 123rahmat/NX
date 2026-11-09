@@ -45,17 +45,17 @@ jobs:
           fi
           exit $fail
 
-      - name: Prepare site (public files only)
+      - name: Prepare site (same allow-listed files as Cloudflare)
         run: |
-          mkdir _site
-          rsync -a --exclude '.git' --exclude '.github' --exclude 'scripts' --exclude 'README.md' --exclude 'DEPLOYMENT.md' --exclude 'wrangler.jsonc' --exclude 'worker' --exclude 'brand' --exclude '_site' --exclude '_headers' ./ _site/
-          find _site -type f | sort
+          bash scripts/cf-build.sh
+          rm public/_headers   # Cloudflare-only header rules; Pages ignores them
+          find public -type f | sort
 
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
-          path: _site
+          path: public
 
       - id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
