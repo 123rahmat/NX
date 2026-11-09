@@ -393,7 +393,10 @@ a.card:hover .more svg{transform:translateX(4px)}
 
 @media (max-width:960px){
   .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"web web" "fw con" "fw dash" "sim int"}
-  .tv svg{max-height:180px}
+  .tv svg{max-height:150px}
+}
+@media (max-width:720px){
+  .pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:640px){
   .bento{grid-template-columns:1fr;grid-template-areas:"web" "fw" "con" "dash" "sim" "int"}
@@ -401,6 +404,17 @@ a.card:hover .more svg{transform:translateX(4px)}
   .tv svg{max-height:140px}
   .b-fw .tv svg{max-height:200px}
   .sec-h.row .btn{width:100%}
+  .sec{padding:44px 0}
+  .sec-h{margin-bottom:24px}
+  .proof{padding:20px 0}
+  .bento{gap:12px}
+  .tv{padding:14px 14px 0}
+  .tv svg{max-height:110px}
+  .b-fw .tv svg{max-height:150px}
+  .tt{padding:14px 16px 16px}
+  .tt p{font-size:14.5px}
+  .pgrid{gap:12px}
+  .hero .wrap{gap:36px}
 }
 
 /* Reveal on scroll (only applied by JS to off-screen elements) */
@@ -427,7 +441,10 @@ a.card:hover .more svg{transform:translateX(4px)}
   .hero .wrap{grid-template-columns:1fr;min-height:0}
   .phero .wrap{grid-template-columns:1fr}
   .phero .art{display:none}
-  .cards,.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .pb{padding:16px 16px 18px}
+  .pb p{font-size:14px}
   .process{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
   .process::before{display:none}
   .split{grid-template-columns:1fr;gap:40px}

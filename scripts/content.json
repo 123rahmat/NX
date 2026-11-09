@@ -47,9 +47,9 @@
    "wave": false
   },
   {
-   "t": "Data & apps",
-   "d": "Dashboards and mobile apps turn device data into live views, history and alerts for your team.",
-   "m": "Dashboards · Mobile apps",
+   "t": "Database & dashboards",
+   "d": "Device data is stored in a cloud database and shown on live dashboards with history, reports and alerts for your team.",
+   "m": "Cloud database · Dashboards",
    "wave": false
   }
  ],

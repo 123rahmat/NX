@@ -60,6 +60,7 @@ ICON = {
     "wifi": I('<path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/>'),
     "bt": I('<path d="m7 7 10 10-5 4V3l5 4L7 17"/>'),
     "cable": I('<path d="M5 3v6a3 3 0 0 0 3 3h8a3 3 0 0 1 3 3v6"/><path d="M3 3h4M17 21h4"/>'),
+    "db": I('<ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13"/><path d="M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/>'),
     "signal": I('<path d="M4 20v-3M9 20v-7M14 20V9M19 20V4"/>'),
 }
 WAICON = ('<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6 0-.9.4s-1.2 1.1-1.2 2.7 1.2 3.2 1.4 3.4 2.4 3.6 5.7 5c2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.4z"/></svg>')
@@ -151,9 +152,9 @@ def pv(v):
         "".join(f'<rect x="{c*36}" y="{r*28}" width="32" height="24" rx="2"/>' for r in range(4) for c in range(4)) +
         '<rect x="72" y="28" width="32" height="24" rx="2" fill="rgba(217,119,6,.35)" stroke="#F59E0B" class="a-pulse"/></g>'
         '<g fill="none" stroke-width="2.5"><path d="M250 190V70M250 190h120" stroke="rgba(143,180,255,.3)"/><path class="a-draw" stroke="#22D3EE" d="M252 90h70c20 0 30 10 38 40l8 58"/></g><circle cx="330" cy="104" r="5" fill="#22D3EE" class="a-pulse"/>',
-     "vision": '<g transform="translate(200 128)"><g fill="currentColor" opacity=".55"><circle cx="-60" cy="-38" r="14"/><path d="M-82 40c0-38 8-58 22-58s22 20 22 58z"/><circle cx="50" cy="-30" r="12"/><path d="M31 40c0-32 7-50 19-50s19 18 19 50z"/></g>'
+     "vision": '<g transform="translate(200 146) scale(.82)"><g fill="currentColor" opacity=".55"><circle cx="-60" cy="-38" r="14"/><path d="M-82 40c0-38 8-58 22-58s22 20 22 58z"/><circle cx="50" cy="-30" r="12"/><path d="M31 40c0-32 7-50 19-50s19 18 19 50z"/></g>'
         '<g fill="none" stroke="#22D3EE" stroke-width="2"><rect class="a-pulse" x="-92" y="-62" width="64" height="108" rx="3"/><rect class="a-pulse" x="22" y="-52" width="56" height="98" rx="3"/></g>'
-        '<g font-family="IBM Plex Mono,monospace" font-size="11" fill="#22D3EE"><text x="-92" y="-68">person 0.97</text><text x="22" y="-58">person 0.94</text></g></g>',
+        '<g font-family="IBM Plex Mono,monospace" font-size="11" fill="#22D3EE"><text x="-92" y="62">person 0.97</text><text x="22" y="62">person 0.94</text></g></g>',
      "health": '<g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 130h360" stroke="rgba(143,180,255,.15)"/>'
         '<path class="a-draw" stroke="#22D3EE" d="M20 130h80l14-36 20 82 18-70 12 24h56l14-36 20 82 18-70 12 24h96"/></g>'
         '<path class="a-pulse" fill="#F87171" d="M330 52c-6-10-24-8-24 6 0 12 24 26 24 26s24-14 24-26c0-14-18-16-24-6z"/>'
@@ -302,13 +303,13 @@ pages = []
 
 # ---------------------------------------------------------------- HOME
 H = A["hero"]
-pipe_icons = ["sim", "chip", "wifi", "layers"]
-CYCLE = '''<figure class="cycle" aria-label="Our work cycle: simulation, embedded system, IoT connectivity, data and apps">
+pipe_icons = ["sim", "chip", "wifi", "db"]
+CYCLE = '''<figure class="cycle" aria-label="Our work cycle: simulation, embedded system, IoT connectivity, database and dashboards">
 <svg class="cy-ring" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="cyg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><circle class="trk" cx="200" cy="200" r="130"/><circle class="flw" cx="200" cy="200" r="130"/><circle class="in" cx="200" cy="200" r="84"/></svg>
 <div class="cy-orbit" aria-hidden="true"><span></span></div>
 <div class="cy-hub"><span class="cy-logo">{LOGO}</span><b>Your product</b><small>One team &middot; one scope</small></div>
 {STAGES}
-<figcaption class="sr">We simulate the system, build the embedded device, connect it through IoT and turn its data into dashboards and apps.</figcaption>
+<figcaption class="sr">We simulate the system, build the embedded device, connect it through IoT and store its data in a database shown on live dashboards.</figcaption>
 </figure>
 '''
 STAGES = "".join(
