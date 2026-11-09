@@ -202,10 +202,11 @@
 
   /* ---------- Side dots: one per section, highlights the section in view ---------- */
   function sectionDots() {
-    // Every visible section of the page, plus the footer as a "Bottom" stop.
+    // Main areas only (sections with a heading), plus the footer as a "Bottom" stop.
     var secs = [].slice.call(doc.querySelectorAll('main > section, body > footer')).filter(function (s) {
-      return s.offsetHeight > 0;
+      return s.offsetHeight > 0 && (s.tagName === 'FOOTER' || s.querySelector('h1, h2'));
     });
+    var pinned = -1; // dot chosen by a click stays lit until the visitor scrolls by hand
     if (secs.length < 2) return;
     var nav = doc.createElement('nav');
     nav.className = 'dots';
@@ -219,6 +220,7 @@
       b.setAttribute('data-label', label.length > 34 ? label.slice(0, 32) + '…' : label);
       b.addEventListener('pointerdown', function (e) { b._touch = e.pointerType !== 'mouse'; });
       b.addEventListener('click', function () {
+        pinned = i; mark(i);
         sec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
         // Mouse users see the name on hover only; touch gets it briefly after a tap.
         if (!b._touch) return;
@@ -238,20 +240,24 @@
         if (k === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
       });
     }
-    // The active dot is the last section whose top has passed 35% of the screen; at the very bottom it is the last one.
+    // The active dot is the last section whose top has passed 35% of the screen; the first at the very top, the last at the very bottom.
     var ticking = false;
     function update() {
       ticking = false;
       var y = window.scrollY, vh = window.innerHeight, line = y + vh * 0.35, idx = 0;
       secs.forEach(function (sec, i) { if (sec.getBoundingClientRect().top + y <= line) idx = i; });
+      if (y < 8) idx = 0;
       if (y + vh >= root.scrollHeight - 2) idx = secs.length - 1;
-      mark(idx);
+      mark(pinned >= 0 ? pinned : idx);
       var max = root.scrollHeight - vh;
       nav.style.setProperty('--p', max > 0 ? Math.min(1, Math.max(0, y / max)).toFixed(4) : '0');
     }
     function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
+    ['wheel', 'touchstart', 'keydown'].forEach(function (t) {
+      window.addEventListener(t, function () { if (pinned >= 0) { pinned = -1; onScroll(); } }, { passive: true });
+    });
     update();
   }
 
