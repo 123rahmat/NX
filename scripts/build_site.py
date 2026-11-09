@@ -292,7 +292,7 @@ def proj_card(p, rel):
             f'<div class="pb"><div class="cat">{e(cat)}{yr}</div><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p>{tags(p["tags"][:5])}</div></article>')
 
 
-def cta_band(rel, title="Ready to build something that works in the real world?", text="Share your idea or requirement. We will reply with a clear scope, timeline and quotation, with no obligation.", cls="sec"):
+def cta_band(rel, title="Ready to build a connected product that performs in the field?", text="Share your requirements. We will reply with a written scope, a realistic timeline and an itemised quotation, with no obligation.", cls="sec"):
     return f'''<section class="{cls}"><div class="wrap"><div class="cta-band" data-rv><div><h2>{e(title)}</h2><p>{e(text)}</p></div>
 <div class="btns"><a class="btn btn-l" href="{rel}contact/">Get a quote {ICON["arr"]}</a><a class="btn btn-wa" href="{WA}" target="_blank" rel="noopener noreferrer">{WAICON} WhatsApp</a></div></div></div></section>'''
 
@@ -368,7 +368,7 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 <div class="pgrid">{"".join(proj_card(PROJ[k], "") for k in ["fingerprint", "power", "solar"])}</div>
 </div></section>
 
-<section class="sec alt" aria-label="Our approach"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
+<section class="sec alt" aria-label="Engineering standard"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
 
 {cta_band("", cls="sec")}'''
 pages.append(page("", "Linqore | Embedded Systems, IoT, Web and Mobile App Development",
