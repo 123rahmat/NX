@@ -24,7 +24,8 @@ Full go-live checklist (GitHub, Cloudflare, form, Google, domain): see [DEPLOYME
 - **Cloudflare:** `wrangler.jsonc` runs `scripts/cf-build.sh`, which copies only public files to `public/`; `_headers` adds security headers.
 
 ## Contact form
-Sent straight to the Gmail in `FORM_TO` (`scripts/build_site.py`) through FormSubmit. Click **Activate** in its first email once.
+On Cloudflare, `worker/index.js` sends it straight to Gmail over SMTP (secrets `GMAIL_USER`, `GMAIL_APP_PASSWORD`).
+On GitHub Pages, or if that fails, it falls back to FormSubmit (`FORM_TO`). Setup: [DEPLOYMENT.md](DEPLOYMENT.md#3-contact-form-straight-to-your-gmail-through-your-own-worker).
 
 ## Custom domain
 After buying a domain and pointing it at the host:

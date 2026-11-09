@@ -16,10 +16,16 @@ The code is complete. These are the switches only the account owner can flip.
 4. Free email on that domain: **Domain → Email → Email Routing** → forward `hello@yourdomain.com` to your Gmail.
 5. Profile → **Authentication → enable 2FA**.
 
-## 3. Contact form (goes straight to your Gmail)
-The form already sends every message directly to your Gmail. Only once:
-1. Open the live site → Contact → send a test message.
-2. In Gmail, open the email from FormSubmit and click **Activate**. Done: every message after that lands in your inbox.
+## 3. Contact form (straight to your Gmail, through your own Worker)
+On the Cloudflare site, the form is sent by the `nx` Worker (`worker/index.js`) through Gmail SMTP. No outside service is involved.
+1. Turn on **2-Step Verification** for your Google account (myaccount.google.com → Security).
+2. Open **myaccount.google.com/apppasswords** → create an App Password called "Linqore website" → copy the 16 letters.
+3. Cloudflare → **Workers & Pages → nx → Settings → Variables and Secrets → Add**:
+   - `GMAIL_USER` (type **Secret**) = your Gmail address
+   - `GMAIL_APP_PASSWORD` (type **Secret**) = the 16-letter App Password
+4. Click **Deploy**, then send a test message from the live Cloudflare site's Contact page. It arrives in your Gmail from "Linqore website", and **Reply** goes to the visitor when they gave an email.
+
+Backup: if the Worker can't send (secrets missing, Gmail down), and on the github.io copy, which has no server, the form uses FormSubmit instead. Click **Activate** once in FormSubmit's first email so that path also reaches you.
 
 ## 4. Google
 1. search.google.com/search-console → **Add property (URL prefix)** with the live URL → verify (HTML tag or DNS for a domain).

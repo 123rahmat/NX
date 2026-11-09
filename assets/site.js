@@ -273,7 +273,9 @@
   function form() {
     var f = doc.getElementById('quote');
     if (!f) return;
-    var endpoint = f.getAttribute('data-endpoint');
+    // On Cloudflare the form posts to our own Worker (Gmail SMTP); GitHub Pages has no server, so it uses FormSubmit.
+    var backup = f.getAttribute('data-endpoint');
+    var own = !/github\.io$/.test(location.hostname);
     var msg = doc.getElementById('form-msg');
     var btn = f.querySelector('button[type=submit]');
     var params = new URLSearchParams(location.search);
@@ -307,15 +309,18 @@
       };
       if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact)) data._replyto = contact;
       btn.disabled = true; btn.textContent = 'Sending...';
-      fetch(endpoint, {
-        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(data), referrerPolicy: 'strict-origin-when-cross-origin'
-      }).then(function (r) {
-        return r.json().catch(function () { return {}; }).then(function (o) {
-          if (!r.ok || o.success === false || o.success === 'false') throw new Error(o.message || 'failed');
-          done();
+      function post(url) {
+        return fetch(url, {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data), referrerPolicy: 'strict-origin-when-cross-origin'
+        }).then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (o) {
+            if (!r.ok || o.success === false || o.success === 'false') throw new Error(o.message || 'failed');
+          });
         });
-      }).catch(function () {
+      }
+      // If our own mailer is down or not set up yet, fall back to FormSubmit so no message is lost.
+      (own ? post('/api/contact').catch(function () { return post(backup); }) : post(backup)).then(done).catch(function () {
         btn.disabled = false; btn.textContent = 'Send request';
         show('The message could not be sent. Please try again, or contact us on WhatsApp.', 'err');
       });

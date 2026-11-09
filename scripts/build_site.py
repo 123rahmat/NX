@@ -32,7 +32,7 @@ def _v(path):
 V = {k: _v(k) for k in ("assets/site.css", "assets/site.js", "assets/logo.svg", "assets/apple-touch-icon.png", "assets/favicon-32.png")}
 
 CSP = ("default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; "
-       "connect-src https://formsubmit.co; base-uri 'none'; form-action 'none'; object-src 'none'; "
+       "connect-src 'self' https://formsubmit.co; base-uri 'none'; form-action 'none'; object-src 'none'; "
        "manifest-src 'self'; upgrade-insecure-requests")
 
 # ---------------------------------------------------------------- icons

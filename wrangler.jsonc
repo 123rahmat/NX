@@ -1,6 +1,8 @@
 {
   // Cloudflare Workers static site (Worker name must match the dashboard: "nx").
   "name": "nx",
+  // Serves ./public and handles POST /api/contact (Gmail SMTP). See worker/index.js.
+  "main": "worker/index.js",
   "compatibility_date": "2026-11-01",
   // Wrangler runs this before every deploy, so no dashboard build command is needed.
   "build": {
@@ -8,6 +10,8 @@
   },
   "assets": {
     "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
     "not_found_handling": "404-page"
   }
 }
