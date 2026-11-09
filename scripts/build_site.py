@@ -148,7 +148,7 @@ def pv(v):
      "power": '<g fill="none" stroke-width="2.5" stroke-linecap="round"><path d="M20 160h360" stroke="rgba(143,180,255,.2)"/>'
         '<path class="a-draw" stroke="#22D3EE" d="M20 125c30-60 50-60 80 0s50 60 80 0 50-60 80 0 50 60 80 0 40-50 40-50"/>'
         '<path class="a-draw" stroke="currentColor" opacity=".6" d="M20 135c30-40 50-40 80 0s50 40 80 0 50-40 80 0 50 40 80 0 40-30 40-30"/></g>'
-        '<g font-family="IBM Plex Mono,monospace" font-size="13" fill="currentColor"><text x="24" y="40">V 229.8</text><text x="24" y="60" fill="#22D3EE">A 4.12</text><text x="300" y="40" class="a-blink">MQTT</text></g>',
+        '<g font-family="IBM Plex Mono,monospace" font-size="13" fill="currentColor" text-anchor="end"><text x="376" y="36">V 229.8</text><text x="376" y="56" fill="#22D3EE">A 4.12</text><text x="376" y="76" class="a-blink">MQTT</text></g>',
      "solar": '<g transform="translate(70 70) skewX(-12)" fill="rgba(143,180,255,.08)" stroke="currentColor" stroke-width="1.5">' +
         "".join(f'<rect x="{c*36}" y="{r*28}" width="32" height="24" rx="2"/>' for r in range(4) for c in range(4)) +
         '<rect x="72" y="28" width="32" height="24" rx="2" fill="rgba(217,119,6,.35)" stroke="#F59E0B" class="a-pulse"/></g>'
@@ -159,7 +159,7 @@ def pv(v):
      "health": '<g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 130h360" stroke="rgba(143,180,255,.15)"/>'
         '<path class="a-draw" stroke="#22D3EE" d="M20 130h80l14-36 20 82 18-70 12 24h56l14-36 20 82 18-70 12 24h96"/></g>'
         '<path class="a-pulse" fill="#F87171" d="M330 52c-6-10-24-8-24 6 0 12 24 26 24 26s24-14 24-26c0-14-18-16-24-6z"/>'
-        '<g font-family="IBM Plex Mono,monospace" font-size="13" fill="currentColor"><text x="24" y="44">HR 76</text><text x="24" y="64">SpO2 98%</text></g>',
+        '<g font-family="IBM Plex Mono,monospace" font-size="13" fill="currentColor"><text x="24" y="82">HR 76</text><text x="24" y="102">SpO2 98%</text></g>',
     }[v]
     return f'<svg viewBox="0 0 400 250" aria-hidden="true" preserveAspectRatio="xMidYMid meet">{s}</svg>'
 
