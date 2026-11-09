@@ -24,6 +24,7 @@
     filters();
     form();
     spotlight();
+    sectionDots();
     var y = doc.getElementById('yr');
     if (y) y.textContent = String(new Date().getFullYear());
   });
@@ -188,6 +189,44 @@
       el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
       el.style.setProperty('--my', (e.clientY - r.top) + 'px');
     }, { passive: true });
+  }
+
+
+  /* ---------- Side dots: one per section, highlights the section in view ---------- */
+  function sectionDots() {
+    var secs = [].slice.call(doc.querySelectorAll('main > section')).filter(function (s) {
+      return s.querySelector('h1, h2') && s.offsetHeight > 0;
+    });
+    if (secs.length < 2) return;
+    var nav = doc.createElement('nav');
+    nav.className = 'dots';
+    nav.setAttribute('aria-label', 'Page sections');
+    var btns = secs.map(function (sec, i) {
+      var h = sec.querySelector('h1, h2');
+      var label = i === 0 ? 'Top' : (h.textContent || '').replace(/\s+/g, ' ').trim();
+      var b = doc.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', label);
+      b.setAttribute('data-label', label.length > 34 ? label.slice(0, 32) + '…' : label);
+      b.addEventListener('click', function () {
+        sec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      });
+      nav.appendChild(b);
+      return b;
+    });
+    doc.body.appendChild(nav);
+    function mark(i) {
+      btns.forEach(function (b, k) {
+        b.classList.toggle('on', k === i);
+        if (k === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+      });
+    }
+    mark(0);
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) mark(secs.indexOf(en.target)); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    secs.forEach(function (sec) { io.observe(sec); });
   }
 
   /* ---------- Project filters ---------- */
