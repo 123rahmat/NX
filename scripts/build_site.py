@@ -73,7 +73,7 @@ SERVICES = [
   "title": "Web Development Company in Islamabad | Linqore",
   "desc": "Linqore builds fast, secure company websites, customer portals and admin panels. Clear scope and quotation before work starts.",
   "h1": "Websites, portals and admin panels that work as hard as you do",
-  "intro": "We build company websites, customer portals and admin systems that load fast, stay secure and are easy for your team to manage. Every project starts with a written scope and quotation.",
+  "intro": "We build company websites, customer portals and admin systems that load fast, stay secure and can be updated by your own team. Every project starts with a written scope and quotation.",
   "build": [("Company websites", "Fast, mobile-first sites that explain what you do and turn visitors into enquiries."),
             ("Customer portals", "Secure areas where customers log in, track orders or view their data."),
             ("Admin panels", "Internal tools to manage records, users and content without technical help."),
@@ -115,7 +115,7 @@ SERVICES = [
   "title": "Mobile App and Dashboard Development | Linqore",
   "desc": "Android and iOS apps and web dashboards that show live data, send commands and raise alerts, built for the people who use them every day.",
   "h1": "Mobile apps and dashboards your team will actually use",
-  "intro": "We build screens that show what your system is doing, send commands and raise alerts, designed for the people who use them every day. Apps are designed together with the firmware and connection, so the whole system works as one.",
+  "intro": "We build screens that show what your system is doing, send commands and raise alerts, designed for the people who use them every day. Standalone apps or apps that control a device: when hardware is involved, we design the app, firmware and connection together.",
   "build": [("Android and iOS apps", "Control devices, view live data and receive alerts on a phone."),
             ("Web dashboards", "Charts, history and reports in the browser for operators and managers."),
             ("Device setup apps", "Pair and configure devices over Bluetooth or Wi-Fi from a phone."),
@@ -230,7 +230,7 @@ def page(path, title, desc, body, schemas=(), cur=""):
 <div><h2 class="fh">Company</h2><ul><li><a href="{rel}projects/">Projects</a></li><li><a href="{rel}about/">About us</a></li><li><a href="{rel}contact/">Contact</a></li><li><a href="{rel}privacy/">Privacy policy</a></li><li><a href="{rel}terms/">Terms of use</a></li></ul></div>
 <div><h2 class="fh">Contact</h2><ul><li><a href="tel:{TEL}">{e(PHONE)}</a></li><li><a href="{WA}" target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li><a href="{rel}contact/">Send a request</a></li><li>{e(C["city"])}</li></ul></div>
 </div>
-<div class="bot"><span>&copy; 2025&ndash;<span id="yr">2026</span> Linqore. All rights reserved.</span><span>Digital solutions &middot; {e(C["city"])}</span></div>
+<div class="bot"><span>&copy; 2025&ndash;<span id="yr">2026</span> Linqore. All rights reserved.</span><span>Engineering &amp; software &middot; {e(C["city"])}</span></div>
 </div></footer>
 <a class="wa-fab" href="{WA}" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">{WAICON}<span>WhatsApp</span></a>'''
     doc = f'''<!doctype html>

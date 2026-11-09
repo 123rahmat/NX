@@ -13,8 +13,8 @@
  },
  "hero": {
   "eyebrow": "Embedded · IoT · Web · Mobile — Islamabad",
-  "title": "Engineering and software for connected products.",
-  "lead": "Linqore designs, builds and supports connected products end to end: embedded firmware, IoT connectivity, web platforms and mobile apps, engineered together so your devices, data and people work as one system.",
+  "title": "Websites, apps and smart devices, engineered to work as one.",
+  "lead": "Linqore designs, builds and supports digital systems end to end: web platforms, mobile apps, embedded firmware and IoT connectivity. Take one piece or the whole system, and get one team that answers for all of it.",
   "cta1": "Get a quote",
   "cta2": "Explore our services",
   "points": [
@@ -59,7 +59,7 @@
   "items": [
    {
     "t": "Websites and web platforms",
-    "d": "Company websites, customer portals and admin systems that are fast, secure and easy for your team to manage.",
+    "d": "Company websites, customer portals and admin systems that load fast, stay secure and can be updated by your own team without calling a developer.",
     "tags": [
      "Websites",
      "Portals",
@@ -128,12 +128,12 @@
  },
  "about": {
   "title": "About us",
-  "intro": "Linqore is an engineering and software company based in Islamabad. We take ownership of the complete connected system, from the firmware on the device to the platform and apps your team relies on every day.",
-  "story": "Most organisations do not need another isolated tool. They need devices, connectivity, platforms and applications that work together reliably as one system.\nThat is the responsibility we take on. We define the requirement, model the system where hardware is involved, build and test the software, and hand over a platform your team can operate with confidence.\nEvery engagement begins with a written scope and quotation, and ends with a documented, working system and an agreed support arrangement.\n",
+  "intro": "Linqore is an engineering and software company based in Islamabad. We build websites, apps and connected devices, and when they need to work together, we take ownership of the whole system.",
+  "story": "Most organisations do not need another isolated tool. They need devices, connectivity, platforms and applications that work together reliably as one system.\nThat is the responsibility we take on, whether the job is a single website or a full device-to-dashboard system. We define the requirement, prototype and test before committing your budget, and hand over something your team can run with confidence.\nEvery engagement begins with a written scope and quotation, and ends with a documented, working system and an agreed support arrangement.\n",
   "values": [
    {
     "t": "Test before we build",
-    "d": "We simulate hardware and control logic first, so design mistakes are caught while they are still cheap to fix."
+    "d": "We prototype, simulate and test early, so problems are caught while they are still cheap to fix, on screens and on circuit boards alike."
    },
    {
     "t": "One team, one system",
@@ -354,9 +354,9 @@
    }
   ]
  },
- "footer": "Digital solutions · Islamabad",
+ "footer": "Engineering & software · Islamabad",
  "legal": {
-  "updated": "6 November 2026",
+  "updated": "9 November 2026",
   "docs": [
    {
     "id": "privacy",
@@ -364,7 +364,7 @@
     "sections": [
      {
       "t": "Who we are",
-      "b": "This website is run by Linqore (\"we\", \"us\"), a digital solutions company in Islamabad. We decide why and how the personal data described here is used. You can reach us at the email address or phone number in the Contact section."
+      "b": "This website is run by Linqore (\"we\", \"us\"), an engineering and software company in Islamabad. We decide why and how the personal data described here is used. You can reach us at the email address or phone number in the Contact section."
      },
      {
       "t": "What we collect",
@@ -380,7 +380,7 @@
      },
      {
       "t": "Who receives your data",
-      "b": "The contact form is delivered by FormSubmit, a form-to-email service, which passes your message to our inbox (an email provider acts for us there). These providers may process data in other countries. We do not sell your data, rent it, or share it for advertising."
+      "b": "The contact form is sent by our own website server straight to our email inbox, which is hosted by Google (Gmail). If that route is unavailable, it is delivered by FormSubmit, a form-to-email service. These providers may process data in other countries. We do not sell your data, rent it, or share it for advertising."
      },
      {
       "t": "How long we keep it",
@@ -392,7 +392,7 @@
      },
      {
       "t": "Security",
-      "b": "The site is served over HTTPS, runs no accounts or database of its own, and restricts what scripts can run in your browser. No online service is perfectly secure, so we cannot guarantee absolute security."
+      "b": "The site is served over HTTPS, has no accounts and keeps no database of visitors, and restricts what scripts can run in your browser. No online service is perfectly secure, so we cannot guarantee absolute security."
      },
      {
       "t": "Children",
@@ -426,7 +426,7 @@
      },
      {
       "t": "Links and third parties",
-      "b": "The site links to or uses third-party services such as FormSubmit and WhatsApp. We do not control them and are not responsible for their content or practices."
+      "b": "The site links to or uses third-party services such as Gmail, FormSubmit and WhatsApp. We do not control them and are not responsible for their content or practices."
      },
      {
       "t": "No warranty and liability",
