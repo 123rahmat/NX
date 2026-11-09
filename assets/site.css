@@ -326,6 +326,7 @@ a.card:hover .more svg{transform:translateX(4px)}
 
 /* WhatsApp floating button */
 .wa-fab{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:10px;height:56px;padding:0 20px 0 16px;border-radius:999px;background:var(--wa);color:#fff;text-decoration:none;font-weight:600;box-shadow:0 10px 30px rgba(15,122,67,.4);transition:transform .25s var(--ease),box-shadow .25s}
+.menu-open .wa-fab{opacity:0;visibility:hidden;pointer-events:none}
 .wa-fab:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(15,122,67,.5)}
 .wa-fab svg{width:26px;height:26px}
 .wa-fab::before{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--wa);animation:ripple 2.6s ease-out infinite;pointer-events:none}
