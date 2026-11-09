@@ -13,6 +13,14 @@
 
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // A refresh always starts at the top, like a new visit; a fresh visit to a #section link still opens that section.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    var reload = nav ? nav.type === 'reload' : false;
+    if (reload || !location.hash) window.scrollTo(0, 0);
+  });
+
   function ready(fn) {
     if (doc.readyState !== 'loading') fn(); else doc.addEventListener('DOMContentLoaded', fn);
   }
@@ -221,12 +229,19 @@
         if (k === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
       });
     }
-    mark(0);
-    if (!('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) mark(secs.indexOf(en.target)); });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    secs.forEach(function (sec) { io.observe(sec); });
+    // The active dot is the last section whose top has passed 35% of the screen; at the very bottom it is the last one.
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var y = window.scrollY, vh = window.innerHeight, line = y + vh * 0.35, idx = 0;
+      secs.forEach(function (sec, i) { if (sec.getBoundingClientRect().top + y <= line) idx = i; });
+      if (y + vh >= root.scrollHeight - 2) idx = secs.length - 1;
+      mark(idx);
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   }
 
   /* ---------- Project filters ---------- */
