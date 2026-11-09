@@ -218,6 +218,11 @@
       b.setAttribute('data-label', label.length > 34 ? label.slice(0, 32) + '…' : label);
       b.addEventListener('click', function () {
         sec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        // Briefly show the section name (touch screens have no hover).
+        btns.forEach(function (x) { x.classList.remove('show'); });
+        b.classList.add('show');
+        clearTimeout(b._t);
+        b._t = setTimeout(function () { b.classList.remove('show'); }, 1600);
       });
       nav.appendChild(b);
       return b;
