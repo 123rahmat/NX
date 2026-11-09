@@ -242,6 +242,8 @@
       secs.forEach(function (sec, i) { if (sec.getBoundingClientRect().top + y <= line) idx = i; });
       if (y + vh >= root.scrollHeight - 2) idx = secs.length - 1;
       mark(idx);
+      var max = root.scrollHeight - vh;
+      nav.style.setProperty('--p', max > 0 ? Math.min(1, Math.max(0, y / max)).toFixed(4) : '0');
     }
     function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
     window.addEventListener('scroll', onScroll, { passive: true });
