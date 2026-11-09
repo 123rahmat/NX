@@ -76,6 +76,7 @@ p{margin:0;text-wrap:pretty}
   .hdr{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--navy)}
   .js .burger{display:grid}
   .js .nav{position:fixed;inset:var(--hdr) 0 0;margin:0;flex-direction:column;align-items:stretch;gap:2px;padding:16px var(--gut) 32px;background:var(--navy);overflow-y:auto;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s,transform .3s var(--ease),visibility .25s;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .js .nav>*{flex-shrink:0}
   .js.menu-open .nav{opacity:1;visibility:visible;transform:none}
   .js.menu-open,.js.menu-open body{overflow:hidden}
   .nav>a,.dd>button{height:52px;font-size:17px;padding:0 12px;width:100%;justify-content:space-between}
