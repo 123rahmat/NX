@@ -16,10 +16,10 @@ The code is complete. These are the switches only the account owner can flip.
 4. Free email on that domain: **Domain → Email → Email Routing** → forward `hello@yourdomain.com` to your Gmail.
 5. Profile → **Authentication → enable 2FA**.
 
-## 3. Contact form (FormSubmit)
+## 3. Contact form (goes straight to your Gmail)
+The form already sends every message directly to your Gmail. Only once:
 1. Open the live site → Contact → send a test message.
-2. Open the "Activate Form" email from FormSubmit in your Gmail and click **Activate**.
-3. FormSubmit then mails you a random alias. Put it in `FORM_TO` in `scripts/build_site.py`, rebuild (`python3 scripts/build_site.py`), commit and push. This hides your email from the page source.
+2. In Gmail, open the email from FormSubmit and click **Activate**. Done: every message after that lands in your inbox.
 
 ## 4. Google
 1. search.google.com/search-console → **Add property (URL prefix)** with the live URL → verify (HTML tag or DNS for a domain).
