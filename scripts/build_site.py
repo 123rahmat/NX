@@ -292,7 +292,7 @@ def proj_card(p, rel):
 
 def cta_band(rel, title="Ready to build something that works in the real world?", text="Share your idea or requirement. We will reply with a clear scope, timeline and quotation, with no obligation.", cls="sec"):
     return f'''<section class="{cls}"><div class="wrap"><div class="cta-band" data-rv><div><h2>{e(title)}</h2><p>{e(text)}</p></div>
-<div class="btns"><a class="btn btn-l" href="{rel}contact/">Get a quotation {ICON["arr"]}</a><a class="btn btn-wa" href="{WA}" target="_blank" rel="noopener noreferrer">{WAICON} WhatsApp</a></div></div></div></section>'''
+<div class="btns"><a class="btn btn-l" href="{rel}contact/">Get a quote {ICON["arr"]}</a><a class="btn btn-wa" href="{WA}" target="_blank" rel="noopener noreferrer">{WAICON} WhatsApp</a></div></div></div></section>'''
 
 
 def faq_html(items):
@@ -355,20 +355,20 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 <div><b>4</b><span>Connectivity options: Wi-Fi, GSM, BLE, wired</span></div><div><b>100%</b><span>Written scope before work starts</span></div>
 </div></div></section>
 
-<section class="sec dk"><div class="wrap">
+<section class="sec"><div class="wrap">
 <div class="sec-h" data-rv><span class="kick">Services</span><h2>{e(A["services"]["title"])}</h2><p>{e(A["services"]["sub"])}</p></div>
 <div class="bento">{BENTO}</div>
 </div></section>
 
 
-<section class="sec dk"><div class="wrap">
+<section class="sec"><div class="wrap">
 <div class="sec-h row" data-rv><div><span class="kick">Selected projects</span><h2>{e(A["projects"]["title"])}</h2><p>{e(A["projects"]["sub"])}</p></div><a class="btn btn-g" href="projects/">See all projects {ICON["arr"]}</a></div>
 <div class="pgrid">{"".join(proj_card(PROJ[k], "") for k in ["fingerprint", "power", "solar"])}</div>
 </div></section>
 
-<section class="sec dk2"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
+<section class="sec alt"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
 
-{cta_band("", cls="sec dk")}'''
+{cta_band("", cls="sec")}'''
 pages.append(page("", "Linqore | Embedded Systems, IoT, Web and Mobile App Development",
     "Linqore designs, builds and supports embedded systems, IoT platforms, web applications and mobile apps, engineered together as one system. Based in Islamabad.",
     home, [dict(ORG, **{"@context": "https://schema.org"}), {"@context": "https://schema.org", "@type": "WebSite", "name": "Linqore", "url": BASE}], "home"))
@@ -379,7 +379,7 @@ svc = phero("Services", "Engineering services for connected products", A["servic
 <div class="sec-h" data-rv><span class="kick">Core services</span><h2>Choose the service you need</h2></div>
 <div class="cards two">{"".join(f'<a class="card" href="../{s["slug"]}/" data-rv><div class="ico-b">{ICON[s["icon"]]}</div><h3>{e(s["nav"])}</h3><p>{e(s["intro"])}</p>{tags(s["tech"][:5])}<span class="more">Explore {e(lc(s["nav"]))} {ICON["arr"]}</span></a>' for s in SERVICES)}</div>
 </div></section>
-<section class="sec dark"><div class="wrap">
+<section class="sec alt"><div class="wrap">
 <div class="sec-h" data-rv><span class="kick">Our process</span><h2>From model to monitored system</h2></div>
 <div class="process">{"".join(f'<div class="step" data-rv><div class="n">{ICON[pipe_icons[i]]}</div><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p><span class="m">{e(p["m"].replace(chr(183), "·"))}</span></div>' for i, p in enumerate(A["pipeline"]))}</div>
 </div></section>
@@ -437,7 +437,7 @@ about = phero("About", "One team, accountable for the whole system", AB["intro"]
 <div data-rv><span class="kick">Our story</span><h2 class="h2">Devices, connectivity and software that work as one</h2><div class="prose">{story}</div></div>
 <div class="cards one" data-rv>{"".join(f'<div class="card"><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(AB["values"], ["sim", "layers", "doc"]))}</div>
 </div></section>
-<section class="sec dark"><div class="wrap">
+<section class="sec alt"><div class="wrap">
 <div class="sec-h" data-rv><span class="kick">Connectivity</span><h2>{e(CM["title"])}</h2><p>{e(CM["sub"])}</p></div>
 <div class="cards four">{"".join(f'<div class="card" data-rv><div class="ico-b">{ICON[link_icons[i]]}</div><h3>{e(l["t"])}</h3><p>{e(l["d"])}</p>{tags(l["tags"])}</div>' for i, l in enumerate(CM["links"]))}</div>
 </div></section>
