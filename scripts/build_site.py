@@ -287,12 +287,12 @@ def tags(items):
 def proj_card(p, rel):
     cat = p["cat"]
     yr = f'<span>{e(p["year"])}</span>' if p.get("year") else ""
-    return (f'<article class="proj" data-cat="{e(cat)}" data-rv><div class="pv">{pv(p["v"])}<span class="badge">{e(p["status"])}</span></div>'
+    return (f'<article class="proj spot" data-cat="{e(cat)}" data-rv><div class="pv">{pv(p["v"])}<span class="badge">{e(p["status"])}</span></div>'
             f'<div class="pb"><div class="cat">{e(cat)}{yr}</div><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p>{tags(p["tags"][:5])}</div></article>')
 
 
-def cta_band(rel, title="Ready to build something that works in the real world?", text="Share your idea or requirement. We will reply with a clear scope, timeline and quotation, with no obligation."):
-    return f'''<section class="sec"><div class="wrap"><div class="cta-band" data-rv><div><h2>{e(title)}</h2><p>{e(text)}</p></div>
+def cta_band(rel, title="Ready to build something that works in the real world?", text="Share your idea or requirement. We will reply with a clear scope, timeline and quotation, with no obligation.", cls="sec"):
+    return f'''<section class="{cls}"><div class="wrap"><div class="cta-band" data-rv><div><h2>{e(title)}</h2><p>{e(text)}</p></div>
 <div class="btns"><a class="btn btn-l" href="{rel}contact/">Get a quotation {ICON["arr"]}</a><a class="btn btn-wa" href="{WA}" target="_blank" rel="noopener noreferrer">{WAICON} WhatsApp</a></div></div></div></section>'''
 
 
@@ -321,6 +321,25 @@ TECH = ["ESP32", "STM32", "Arduino", "Raspberry Pi", "MQTT", "HTTP/HTTPS", "Wi-F
         "RS-485", "CAN", "MATLAB/Simulink", "Proteus", "Python", "PyTorch", "Android", "iOS", "REST APIs", "TLS"]
 MARQ = '<section class="marq" aria-label="Technologies we work with"><div class="marq-wrap"><div class="marq-in">' + \
     "".join(f"<span>{e(t)}</span>" for t in TECH) + "".join(f'<span aria-hidden="true">{e(t)}</span>' for t in TECH) + "</div></div></section>"
+
+# Services bento: one tile per service, each with its own small animated illustration.
+BV = {
+ "web": '<svg viewBox="0 0 320 150" aria-hidden="true"><rect x="10" y="10" width="300" height="130" rx="10" class="bv-frame"/><path d="M10 34h300" class="bv-line"/><circle cx="26" cy="22" r="4" class="bv-dot"/><circle cx="40" cy="22" r="4" class="bv-dot"/><circle cx="54" cy="22" r="4" class="bv-dot"/><rect x="28" y="50" width="120" height="12" rx="4" class="bv-fill"/><rect x="28" y="70" width="90" height="7" rx="3.5" class="bv-soft"/><rect x="28" y="84" width="104" height="7" rx="3.5" class="bv-soft"/><rect x="28" y="104" width="62" height="20" rx="6" class="bv-acc bv-pulse"/><rect x="176" y="48" width="116" height="76" rx="8" class="bv-frame"/><path d="M188 110l22-24 18 12 26-30 26 16" class="bv-draw"/></svg>',
+ "fw": '<svg viewBox="0 0 220 300" aria-hidden="true"><rect x="50" y="40" width="120" height="120" rx="18" class="bv-frame"/><rect x="80" y="70" width="60" height="60" rx="10" class="bv-acc"/><circle cx="110" cy="100" r="9" class="bv-hole"/>' + "".join(f'<path d="M{70+i*20} 40V24M{70+i*20} 160v16M50 {60+i*20}H34M170 {60+i*20}h16" class="bv-line"/>' for i in range(5)) + '<g class="bv-code"><text x="24" y="210">while (1) {</text><text x="40" y="232">read_sensors();</text><text x="40" y="254">control();</text><text x="24" y="276">}<tspan class="bv-blink">_</tspan></text></g></svg>',
+ "con": '<svg viewBox="0 0 220 150" aria-hidden="true"><circle cx="60" cy="96" r="10" class="bv-acc"/><path d="M60 72a24 24 0 0 1 24 24M60 52a44 44 0 0 1 44 44M60 32a64 64 0 0 1 64 64" class="bv-wave"/><path d="M146 46a18 18 0 0 1 34-6 14 14 0 0 1 8 26h-40a12 12 0 0 1-2-20z" class="bv-frame"/><path d="M128 96h40" class="bv-dash"/></svg>',
+ "dash": '<svg viewBox="0 0 220 150" aria-hidden="true"><path d="M20 128h180" class="bv-line"/>' + "".join(f'<rect x="{30+i*34}" y="{128-h}" width="20" height="{h}" rx="5" class="bv-bar" style-delay="{i}"/>' for i, h in enumerate([46, 78, 58, 98, 70])) + '<circle cx="190" cy="26" r="6" class="bv-acc bv-pulse"/></svg>',
+ "sim": '<svg viewBox="0 0 220 150" aria-hidden="true"><path d="M20 120V24M20 120h184" class="bv-line"/><path d="M24 96c20-50 36-50 56 0s36 50 56 0 36-50 56 0" class="bv-draw"/><circle cx="80" cy="96" r="5" class="bv-acc"/><circle cx="136" cy="96" r="5" class="bv-acc"/></svg>',
+ "int": '<svg viewBox="0 0 320 150" aria-hidden="true">' + "".join(f'<path d="M160 75L{x} {y}" class="bv-dash"/><rect x="{x-22}" y="{y-14}" width="44" height="28" rx="8" class="bv-frame"/>' for x, y in [(50, 34), (50, 116), (270, 34), (270, 116)]) + '<circle cx="160" cy="75" r="22" class="bv-acc"/><circle cx="160" cy="75" r="8" class="bv-hole"/></svg>',
+}
+BENTO_KEYS = [("Websites and web platforms", "web", "b-web"), ("Embedded firmware", "fw", "b-fw"),
+              ("Connectivity and cloud", "con", "b-con"), ("Dashboards and mobile apps", "dash", "b-dash"),
+              ("Simulation and testing", "sim", "b-sim"), ("Integration and support", "int", "b-int")]
+_SV = {s["t"]: s for s in A["services"]["items"]}
+BENTO = "".join(
+    f'<a class="tile spot {cls}" href="{SVC_LINK[t]}/" data-rv><div class="tv">{BV[k].replace(" style-delay=", " data-d=")}</div>'
+    f'<div class="tt"><h3>{e(t)}</h3><p>{e(_SV[t]["d"])}</p><span class="more">Learn more {ICON["arr"]}</span></div></a>'
+    for t, k, cls in BENTO_KEYS)
+
 home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
 <div>
 <span class="eyebrow">{e(H["eyebrow"].replace(chr(183), "·"))}</span>
@@ -331,33 +350,34 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 </div>
 {CYCLE}</div></section>
 {MARQ}
-<section class="sec"><div class="wrap">
-<div class="sec-h c" data-rv><span class="kick">Services</span><h2>{e(A["services"]["title"])}</h2><p>{e(A["services"]["sub"])}</p></div>
-<div class="cards">{"".join(f'<a class="card" href="{SVC_LINK[s["t"]]}/" data-rv><div class="ico-b">{ICON[SVC_ICON[s["t"]]]}</div><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p><span class="more">Learn more {ICON["arr"]}</span></a>' for s in A["services"]["items"])}</div>
+
+<section class="proof"><div class="wrap"><div class="stats" data-rv>
+<div><b>7</b><span>Systems delivered, device to app</span></div><div><b>6</b><span>Engineering disciplines in one team</span></div>
+<div><b>4</b><span>Connectivity options: Wi-Fi, GSM, BLE, wired</span></div><div><b>100%</b><span>Written scope before work starts</span></div>
+</div></div></section>
+
+<section class="sec dk"><div class="wrap">
+<div class="sec-h" data-rv><span class="kick">Services</span><h2>{e(A["services"]["title"])}</h2><p>{e(A["services"]["sub"])}</p></div>
+<div class="bento">{BENTO}</div>
 </div></section>
 
-<section class="sec dark"><div class="wrap">
+<section class="sec dk2"><div class="wrap">
 <div class="sec-h" data-rv><span class="kick">How it works</span><h2>Our work cycle: from model to monitored system</h2><p>Every project follows the same proven cycle. Firmware, connectivity and applications are designed together, so they work together.</p></div>
 <div class="process">{"".join(f'<div class="step" data-rv><div class="n">{ICON[pipe_icons[i]]}</div><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p><span class="m">{e(p["m"].replace(chr(183), "·"))}</span></div>' for i, p in enumerate(A["pipeline"]))}</div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-<div class="stats" data-rv><div><b>7</b><span>Systems delivered</span></div><div><b>6</b><span>Engineering disciplines</span></div><div><b>4</b><span>Connectivity options</span></div><div><b>100%</b><span>Written scope before work starts</span></div></div>
-</div></section>
-
-<section class="sec alt"><div class="wrap">
-<div class="sec-h" data-rv><span class="kick">Selected projects</span><h2>{e(A["projects"]["title"])}</h2><p>{e(A["projects"]["sub"])}</p></div>
+<section class="sec dk"><div class="wrap">
+<div class="sec-h row" data-rv><div><span class="kick">Selected projects</span><h2>{e(A["projects"]["title"])}</h2><p>{e(A["projects"]["sub"])}</p></div><a class="btn btn-g" href="projects/">See all projects {ICON["arr"]}</a></div>
 <div class="pgrid">{"".join(proj_card(PROJ[k], "") for k in ["fingerprint", "power", "solar"])}</div>
-<p class="sec-more" data-rv><a class="btn btn-o" href="projects/">See all projects {ICON["arr"]}</a></p>
 </div></section>
 
-<section class="sec dark"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
+<section class="sec dk2"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec dk"><div class="wrap">
 <div class="sec-h c" data-rv><span class="kick">Why Linqore</span><h2>How we deliver dependable systems</h2></div>
-<div class="cards">{"".join(f'<div class="card" data-rv><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(A["about"]["values"], ["sim", "layers", "doc"]))}</div>
+<div class="cards">{"".join(f'<div class="card spot" data-rv><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(A["about"]["values"], ["sim", "layers", "doc"]))}</div>
 </div></section>
-{cta_band("")}'''
+{cta_band("", cls="sec dk")}'''
 pages.append(page("", "Linqore | Embedded Systems, IoT, Web and Mobile App Development",
     "Linqore designs, builds and supports embedded systems, IoT platforms, web applications and mobile apps, engineered together as one system. Based in Islamabad.",
     home, [dict(ORG, **{"@context": "https://schema.org"}), {"@context": "https://schema.org", "@type": "WebSite", "name": "Linqore", "url": BASE}], "home"))

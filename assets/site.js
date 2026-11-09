@@ -23,6 +23,7 @@
     heroCanvas();
     filters();
     form();
+    spotlight();
     var y = doc.getElementById('yr');
     if (y) y.textContent = String(new Date().getFullYear());
   });
@@ -165,6 +166,19 @@
       new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) start(); }).observe(cv);
     }
     doc.addEventListener('visibilitychange', function () { if (!doc.hidden) start(); });
+  }
+
+
+  /* ---------- Spotlight hover (pointer devices only) ---------- */
+  function spotlight() {
+    if (!window.matchMedia || !matchMedia('(hover: hover)').matches) return;
+    doc.addEventListener('pointermove', function (e) {
+      var el = e.target.closest && e.target.closest('.spot');
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, { passive: true });
   }
 
   /* ---------- Project filters ---------- */

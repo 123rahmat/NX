@@ -165,7 +165,7 @@ p{margin:0}
 .sec-h.c{margin-left:auto;margin-right:auto;text-align:center}
 .kick{font:500 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .dark .kick{color:#8FB4FF}
-.sec-h h2{font-size:clamp(30px,4vw,44px);margin:12px 0 14px}
+.sec-h h2{font-size:clamp(32px,4.4vw,54px);margin:12px 0 16px;letter-spacing:-.025em}
 .sec-h p{color:var(--muted);font-size:18px}
 .dark .sec-h p{color:var(--muted-d)}
 .dark h2,.dark h3{color:#fff}
@@ -330,9 +330,82 @@ a.card:hover .more svg{transform:translateX(4px)}
 .wa-fab svg{width:26px;height:26px}
 .wa-fab::before{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--wa);animation:ripple 2.6s ease-out infinite;pointer-events:none}
 
+
+/* ---------- Dark-first homepage sections ---------- */
+.dk,.dk2,.proof{color:var(--ink-d)}
+.dk{background:var(--navy)}
+.dk2{background:linear-gradient(180deg,#0D1931,#0B1426);border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d)}
+.dk h2,.dk2 h2,.dk h3,.dk2 h3{color:#fff}
+.dk .kick,.dk2 .kick{color:#8FB4FF}
+.dk .sec-h p,.dk2 .sec-h p{color:var(--muted-d)}
+.sec-h.row{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.sec-h.row>div{max-width:720px}
+.dk .card{background:var(--navy-2);border-color:var(--line-d);box-shadow:none}
+.dk .card p{color:var(--muted-d)}
+.dk .ico-b{background:rgba(59,130,246,.14);color:#8FB4FF}
+.dk .proj{background:var(--navy-2);border-color:var(--line-d);box-shadow:none}
+.dk .proj:hover{box-shadow:0 20px 50px rgba(0,0,0,.35);border-color:rgba(91,141,239,.45)}
+.dk .pb h3{color:#fff}.dk .pb p{color:var(--muted-d)}.dk .pb .cat{color:#8FB4FF}.dk .pb .cat span{color:var(--muted-d)}
+.dk .cta-band{border:1px solid var(--line-d)}
+.dk .tags li{background:rgba(255,255,255,.04);color:var(--muted-d);border-color:var(--line-d)}
+
+/* Proof strip directly under the hero */
+.proof{background:var(--navy);padding:clamp(28px,4vw,48px) 0}
+.proof .stats{background:var(--line-d);border-color:var(--line-d)}
+.proof .stats div{background:var(--navy-2)}
+.proof .stats b{color:#fff;background:linear-gradient(92deg,#fff,#9CC3FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.proof .stats span{color:var(--muted-d)}
+
+/* ---------- Services bento grid ---------- */
+.bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"web web fw" "con dash fw" "sim int int";gap:18px}
+.b-web{grid-area:web}.b-fw{grid-area:fw}.b-con{grid-area:con}.b-dash{grid-area:dash}.b-sim{grid-area:sim}.b-int{grid-area:int}
+.tile{position:relative;overflow:hidden;display:flex;flex-direction:column;border-radius:20px;background:linear-gradient(180deg,#111F3D,#0E1A33);border:1px solid var(--line-d);color:var(--ink-d);text-decoration:none;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.tile:hover{transform:translateY(-4px);border-color:rgba(91,141,239,.5);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.tv{flex:1;display:flex;align-items:center;justify-content:center;padding:clamp(18px,2.4vw,30px) clamp(18px,2.4vw,30px) 0;min-height:150px}
+.tv svg{width:100%;height:auto;max-height:220px}
+.b-fw .tv svg{max-height:340px}
+.tt{padding:clamp(18px,2.2vw,28px)}
+.tt h3{font-size:clamp(18px,1.6vw,21px);margin:0 0 8px;color:#fff}
+.tt p{color:var(--muted-d);font-size:15px}
+.tile .more{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:#8FB4FF;font-weight:600;font-size:14.5px}
+.tile .more svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.tile:hover .more svg{transform:translateX(4px)}
+/* illustration parts */
+.bv-frame{fill:rgba(143,180,255,.06);stroke:rgba(143,180,255,.45);stroke-width:2}
+.bv-line{fill:none;stroke:rgba(143,180,255,.35);stroke-width:2;stroke-linecap:round}
+.bv-dot{fill:rgba(143,180,255,.4)}
+.bv-fill{fill:rgba(143,180,255,.35)}.bv-soft{fill:rgba(143,180,255,.16)}
+.bv-acc{fill:var(--cyan)}.bv-hole{fill:#0E1A33}
+.bv-draw{fill:none;stroke:var(--cyan);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:420;stroke-dashoffset:420;animation:draw 3.2s var(--ease) infinite alternate}
+.bv-wave{fill:none;stroke:var(--cyan);stroke-width:3;stroke-linecap:round;animation:pulse 2.2s ease-in-out infinite}
+.bv-dash{fill:none;stroke:rgba(143,180,255,.55);stroke-width:2;stroke-dasharray:5 7;animation:flowd 1.6s linear infinite}
+.bv-bar{fill:rgba(59,130,246,.75);transform-box:fill-box;transform-origin:bottom;animation:grow 2.8s var(--ease) infinite alternate}
+.bv-bar:nth-of-type(2){animation-delay:.2s}.bv-bar:nth-of-type(3){animation-delay:.4s}.bv-bar:nth-of-type(4){animation-delay:.6s;fill:var(--cyan)}.bv-bar:nth-of-type(5){animation-delay:.8s}
+.bv-pulse{animation:pulse 2s ease-in-out infinite}
+.bv-code{font:13px var(--mono);fill:#8FB4FF}.bv-blink{animation:blink 1s steps(2) infinite}
+@keyframes grow{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+
+/* Spotlight: a soft glow follows the pointer on cards and tiles */
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(59,130,246,.16),transparent 60%);opacity:0;transition:opacity .35s;pointer-events:none}
+.spot:hover::before{opacity:1}
+.tile.spot::before{z-index:0}.tile>*{position:relative;z-index:1}
+
+@media (max-width:960px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"web web" "fw con" "fw dash" "sim int"}
+  .tv svg{max-height:180px}
+}
+@media (max-width:640px){
+  .bento{grid-template-columns:1fr;grid-template-areas:"web" "fw" "con" "dash" "sim" "int"}
+  .tv{min-height:0}
+  .tv svg{max-height:140px}
+  .b-fw .tv svg{max-height:200px}
+  .sec-h.row .btn{width:100%}
+}
+
 /* Reveal on scroll (only applied by JS to off-screen elements) */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.rv.in{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .8s var(--ease),transform .8s var(--ease),filter .8s var(--ease)}
+.rv.in{opacity:1;transform:none;filter:none}
 
 /* Keyframes */
 @keyframes pulse{50%{opacity:.35}}
