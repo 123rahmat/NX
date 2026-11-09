@@ -57,6 +57,15 @@
         btn.setAttribute('aria-expanded', String(open));
       });
     });
+    // Keyboard: close a dropdown once focus leaves it.
+    doc.querySelectorAll('.dd').forEach(function (dd) {
+      dd.addEventListener('focusout', function (e) {
+        if (!dd.contains(e.relatedTarget) && dd.classList.contains('open') && window.innerWidth > 960) {
+          dd.classList.remove('open');
+          dd.querySelector('button').setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
     doc.addEventListener('click', function (e) {
       if (!e.target.closest('.dd')) doc.querySelectorAll('.dd.open').forEach(function (d) {
         d.classList.remove('open');

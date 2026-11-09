@@ -492,6 +492,9 @@ nf = page("404-tmp/", "Page not found | Linqore", "This page does not exist.",
           f'<section class="phero"><div class="grid-bg"></div><div class="wrap"><div><h1>Page not found</h1><p class="lead">The page you are looking for does not exist or has moved.</p><p class="sec-more"><a class="btn btn-p" href="{BASE}">Back to home {ICON["arr"]}</a></p></div></div></section>')
 src = (ROOT / "404-tmp" / "index.html").read_text().replace('href="../', f'href="{BASE}').replace('src="../', f'src="{BASE}')
 src = src.replace(f'<link rel="canonical" href="{BASE}404-tmp/">', '<meta name="robots" content="noindex">')
+# The 404 page is served at any path (and on any host), so it loads assets from the canonical site; allow that origin.
+_origin = "https://" + BASE.split("/")[2]
+src = src.replace("script-src 'self'", f"script-src 'self' {_origin}").replace("style-src 'self'", f"style-src 'self' {_origin}").replace("font-src 'self'", f"font-src 'self' {_origin}").replace("img-src 'self' data:", f"img-src 'self' {_origin} data:")
 (ROOT / "404.html").write_text(src)
 (ROOT / "404-tmp" / "index.html").unlink(); (ROOT / "404-tmp").rmdir()
 

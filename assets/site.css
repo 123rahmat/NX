@@ -25,7 +25,7 @@ p{margin:0;text-wrap:pretty}
 :focus-visible{outline:3px solid var(--accent-2);outline-offset:3px;border-radius:4px}
 .wrap{max-width:calc(var(--wrap) + 2 * var(--gut));margin:0 auto;padding:0 var(--gut)}
 @media (min-width:1600px){:root{--wrap:1320px}}
-.skip{position:absolute;left:12px;top:-60px;z-index:100;background:#fff;color:#0F1B2E;padding:10px 14px;border-radius:8px;font-weight:600}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:#fff;color:#0F1B2E;text-decoration:none;padding:10px 14px;border-radius:8px;font-weight:600}
 .skip:focus{top:12px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -40,7 +40,8 @@ p{margin:0;text-wrap:pretty}
 .brand svg{width:34px;height:34px;flex:none}
 .nav{display:flex;align-items:center;gap:4px;margin-left:auto}
 .nav>a,.dd>button{display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;color:var(--muted-d);text-decoration:none;font:500 15px var(--sans);background:none;border:0;cursor:pointer;transition:color .2s,background .2s}
-.nav>a:hover,.dd>button:hover,.dd:focus-within>button{color:#fff;background:rgba(255,255,255,.06)}
+.nav>a:focus-visible,.dd>button:focus-visible,.dd.open>button{color:#fff;background:rgba(255,255,255,.06)}
+@media (hover:hover) and (pointer:fine){.nav>a:hover,.dd>button:hover{color:#fff;background:rgba(255,255,255,.06)}}
 .nav>a[aria-current],.dd.cur>button{color:#fff}
 .nav .cta{margin-left:10px;background:var(--btn);color:#fff!important;padding:0 18px}
 .nav .cta:hover{background:var(--btn-h)}
@@ -48,8 +49,9 @@ p{margin:0;text-wrap:pretty}
 .dd>button svg{width:12px;height:12px;transition:transform .25s var(--ease)}
 .dd-menu{position:absolute;top:calc(100% + 10px);left:50%;width:min(560px,90vw);transform:translate(-50%,6px);opacity:0;visibility:hidden;transition:opacity .2s,transform .25s var(--ease),visibility .2s;background:var(--navy-2);border:1px solid var(--line-d);border-radius:var(--r);padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:4px;box-shadow:0 24px 60px rgba(0,0,0,.4)}
 .dd-menu::before{content:"";position:absolute;inset:-12px 0 auto;height:12px}
-.dd:hover .dd-menu,.dd:focus-within .dd-menu,.dd.open .dd-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
-.dd:hover>button svg,.dd.open>button svg{transform:rotate(180deg)}
+.dd.open .dd-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media (hover:hover) and (pointer:fine) and (min-width:961px){.dd:hover .dd-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}.dd:hover>button svg{transform:rotate(180deg)}}
+.dd.open>button svg{transform:rotate(180deg)}
 .dd-menu a{display:flex;gap:12px;padding:12px;border-radius:var(--r-sm);text-decoration:none;color:var(--ink-d);transition:background .2s}
 .dd-menu a:hover,.dd-menu a[aria-current]{background:rgba(255,255,255,.06)}
 .dd-menu .ico{flex:none;width:38px;height:38px;border-radius:9px;background:rgba(59,130,246,.14);color:#8FB4FF;display:grid;place-items:center}
@@ -58,6 +60,7 @@ p{margin:0;text-wrap:pretty}
 .dd-menu small{display:block;color:var(--muted-d);font-size:13px;line-height:1.45;margin-top:2px}
 .dd-menu .all svg{width:16px;height:16px;flex:none}
 .dd-menu .all{align-items:center;gap:6px;grid-column:1/-1;justify-content:center;color:#8FB4FF;font-weight:500;font-size:14px;border-top:1px solid var(--line-d);border-radius:0 0 var(--r-sm) var(--r-sm);margin-top:4px}
+.nav a,.nav button,.burger{-webkit-tap-highlight-color:transparent}
 .burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:10px;border:1px solid var(--line-d);background:transparent;color:#fff;cursor:pointer;place-items:center}
 .burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .3s var(--ease),background .2s}
 .burger span::before,.burger span::after{content:"";position:absolute;left:0}
@@ -71,11 +74,11 @@ p{margin:0;text-wrap:pretty}
   .js .burger{display:grid}
   .js .nav{position:fixed;inset:var(--hdr) 0 0;margin:0;flex-direction:column;align-items:stretch;gap:2px;padding:16px var(--gut) 32px;background:var(--navy);overflow-y:auto;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s,transform .3s var(--ease),visibility .25s}
   .js.menu-open .nav{opacity:1;visibility:visible;transform:none}
-  .js.menu-open{overflow:hidden}
+  .js.menu-open,.js.menu-open body{overflow:hidden}
+  .js .nav{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
   .nav>a,.dd>button{height:52px;font-size:17px;padding:0 12px;width:100%;justify-content:space-between}
   .dd-menu{position:static;transform:none;width:auto;opacity:1;visibility:visible;grid-template-columns:1fr;background:transparent;border:0;box-shadow:none;padding:0 0 8px 8px;display:none}
   .dd.open .dd-menu{display:grid;transform:none}
-  .dd:hover .dd-menu{transform:none}
   .nav .cta{margin:14px 0 0;justify-content:center}
   .hdr .wrap{gap:12px}
   html:not(.js) .hdr .wrap{height:auto;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
