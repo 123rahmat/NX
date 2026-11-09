@@ -38,7 +38,6 @@ p{margin:0;text-wrap:pretty}
 @media (max-width:360px){.hdr .brand img{height:32px}}
 .ftr .brand img{height:40px}
 .brand svg{width:34px;height:34px;flex:none}
-.brand .q{color:var(--cyan)}
 .nav{display:flex;align-items:center;gap:4px;margin-left:auto}
 .nav>a,.dd>button{display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;color:var(--muted-d);text-decoration:none;font:500 15px var(--sans);background:none;border:0;cursor:pointer;transition:color .2s,background .2s}
 .nav>a:hover,.dd>button:hover,.dd:focus-within>button{color:#fff;background:rgba(255,255,255,.06)}
@@ -93,8 +92,6 @@ p{margin:0;text-wrap:pretty}
 .btn-l:hover{transform:translateY(-1px);box-shadow:var(--shadow-lg)}
 .btn-g{border-color:rgba(255,255,255,.22);color:#fff;background:rgba(255,255,255,.04)}
 .btn-g:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.08)}
-.btn-o{border-color:var(--line);color:var(--ink);background:transparent}
-.btn-o:hover{border-color:var(--accent);color:var(--accent)}
 .btn-wa{background:var(--wa);color:#fff}
 .btn-wa:hover{filter:brightness(1.1);transform:translateY(-1px)}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
@@ -120,13 +117,12 @@ p{margin:0;text-wrap:pretty}
 .cy-ring .flw{fill:none;stroke:url(#cyg);stroke-width:2.5;stroke-dasharray:6 14;animation:flowd 1.6s linear infinite;opacity:.8}
 .cy-ring .in{fill:rgba(15,28,54,.55);stroke:rgba(143,180,255,.12);stroke-width:1.5}
 .cy-orbit{position:absolute;inset:17.5%;border-radius:50%;animation:spin 8s linear infinite;z-index:1}
-.cy-st{z-index:2}
 .cy-orbit span{position:absolute;left:50%;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#22D3EE;box-shadow:0 0 0 6px rgba(34,211,238,.18),0 0 24px 6px rgba(34,211,238,.55)}
 .cy-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:28%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
 .cy-logo svg{width:52px;height:52px;margin-bottom:6px;filter:drop-shadow(0 8px 24px rgba(59,130,246,.5))}
 .cy-hub b{color:#fff;font-size:clamp(15px,1.6vw,18px)}
 .cy-hub small{color:var(--muted-d);font:500 10.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
-.cy-st{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;width:max-content;max-width:46%;padding:12px 16px 12px 12px;border-radius:14px;background:rgba(15,28,54,.92);border:1px solid var(--line-d);box-shadow:0 12px 32px rgba(0,0,0,.35);animation:act 8s linear infinite}
+.cy-st{position:absolute;z-index:2;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;width:max-content;max-width:46%;padding:12px 16px 12px 12px;border-radius:14px;background:rgba(15,28,54,.92);border:1px solid var(--line-d);box-shadow:0 12px 32px rgba(0,0,0,.35);animation:act 8s linear infinite}
 .cy-st.s1{left:50%;top:17.5%}.cy-st.s2{left:82.5%;top:50%;animation-delay:2s}.cy-st.s3{left:50%;top:82.5%;animation-delay:4s}.cy-st.s4{left:17.5%;top:50%;animation-delay:6s}
 .cy-ic{flex:none;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:rgba(59,130,246,.16);color:#8FB4FF;transition:background .3s,color .3s}
 .cy-ic svg{width:22px;height:22px}
@@ -147,8 +143,7 @@ p{margin:0;text-wrap:pretty}
 @keyframes mq{to{transform:translateX(calc(-50% - 6px))}}
 
 /* ---------- Page hero (inner pages) ---------- */
-.phero{position:relative;overflow:hidden;background:radial-gradient(900px 420px at 85% -20%,#1B3570 0%,transparent 60%),var(--navy);color:var(--ink-d);isolation:isolate}
-.phero{border-bottom:1px solid var(--line-d)}
+.phero{position:relative;overflow:hidden;background:radial-gradient(900px 420px at 85% -20%,#1B3570 0%,transparent 60%),var(--navy);color:var(--ink-d);isolation:isolate;border-bottom:1px solid var(--line-d)}
 .phero+.sec{padding-top:clamp(40px,5vw,72px)}
 .phero .wrap{padding-top:clamp(48px,6vw,84px);padding-bottom:clamp(52px,6vw,88px);display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
 .phero h1{font-size:clamp(30px,3.8vw,46px);color:#fff;margin:16px 0 18px;letter-spacing:-.025em}
@@ -413,9 +408,7 @@ a.card:hover .more svg{transform:translateX(4px)}
 
 /* Keyframes */
 @keyframes pulse{50%{opacity:.35}}
-@keyframes float{50%{transform:translateY(-10px)}}
 @keyframes draw{to{stroke-dashoffset:0}}
-@keyframes fade{to{opacity:1}}
 @keyframes flow{to{background-position:-200% 0}}
 @keyframes flowd{to{stroke-dashoffset:-28}}
 @keyframes ring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.8);opacity:0}}

@@ -125,8 +125,6 @@ SERVICES = [
           ("Can the app control my device?", "Yes. Apps can send commands, change schedules and settings, and show live status."),
           ("Can I get a dashboard without a mobile app?", "Yes. A web dashboard works on phones and computers without installing anything.")]},
 ]
-SVC_ICON = {"Websites and web platforms": "web", "Embedded firmware": "chip", "Connectivity and cloud": "cloud",
-            "Dashboards and mobile apps": "phone", "Simulation and testing": "sim", "Integration and support": "tool"}
 SVC_LINK = {"Websites and web platforms": "web-development", "Embedded firmware": "embedded-systems",
             "Connectivity and cloud": "iot-solutions", "Dashboards and mobile apps": "mobile-apps",
             "Simulation and testing": "embedded-systems", "Integration and support": "iot-solutions"}
@@ -361,10 +359,6 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 <div class="bento">{BENTO}</div>
 </div></section>
 
-<section class="sec dk2"><div class="wrap">
-<div class="sec-h" data-rv><span class="kick">How it works</span><h2>Our work cycle: from model to monitored system</h2><p>Every project follows the same proven cycle. Firmware, connectivity and applications are designed together, so they work together.</p></div>
-<div class="process">{"".join(f'<div class="step" data-rv><div class="n">{ICON[pipe_icons[i]]}</div><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p><span class="m">{e(p["m"].replace(chr(183), "·"))}</span></div>' for i, p in enumerate(A["pipeline"]))}</div>
-</div></section>
 
 <section class="sec dk"><div class="wrap">
 <div class="sec-h row" data-rv><div><span class="kick">Selected projects</span><h2>{e(A["projects"]["title"])}</h2><p>{e(A["projects"]["sub"])}</p></div><a class="btn btn-g" href="projects/">See all projects {ICON["arr"]}</a></div>
@@ -373,10 +367,6 @@ home = f'''<section class="hero"><canvas id="net" aria-hidden="true"></canvas><d
 
 <section class="sec dk2"><div class="wrap quote" data-rv><blockquote>&ldquo;{e(A["quote"]["text"])}&rdquo;</blockquote><cite>{e(A["quote"]["by"])}</cite></div></section>
 
-<section class="sec dk"><div class="wrap">
-<div class="sec-h c" data-rv><span class="kick">Why Linqore</span><h2>How we deliver dependable systems</h2></div>
-<div class="cards">{"".join(f'<div class="card spot" data-rv><div class="ico-b">{ICON[ic]}</div><h3>{e(v["t"])}</h3><p>{e(v["d"])}</p></div>' for v, ic in zip(A["about"]["values"], ["sim", "layers", "doc"]))}</div>
-</div></section>
 {cta_band("", cls="sec dk")}'''
 pages.append(page("", "Linqore | Embedded Systems, IoT, Web and Mobile App Development",
     "Linqore designs, builds and supports embedded systems, IoT platforms, web applications and mobile apps, engineered together as one system. Based in Islamabad.",
@@ -387,10 +377,6 @@ svc = phero("Services", "Engineering services for connected products", A["servic
 <section class="sec"><div class="wrap">
 <div class="sec-h" data-rv><span class="kick">Core services</span><h2>Choose the service you need</h2></div>
 <div class="cards two">{"".join(f'<a class="card" href="../{s["slug"]}/" data-rv><div class="ico-b">{ICON[s["icon"]]}</div><h3>{e(s["nav"])}</h3><p>{e(s["intro"])}</p>{tags(s["tech"][:5])}<span class="more">Explore {e(lc(s["nav"]))} {ICON["arr"]}</span></a>' for s in SERVICES)}</div>
-</div></section>
-<section class="sec alt"><div class="wrap">
-<div class="sec-h" data-rv><span class="kick">Full capability</span><h2>Six disciplines, one accountable team</h2></div>
-<div class="cards">{"".join(f'<div class="card" data-rv><div class="ico-b">{ICON[SVC_ICON[s["t"]]]}</div><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p>{tags(s["tags"])}</div>' for s in A["services"]["items"])}</div>
 </div></section>
 <section class="sec dark"><div class="wrap">
 <div class="sec-h" data-rv><span class="kick">Our process</span><h2>From model to monitored system</h2></div>
