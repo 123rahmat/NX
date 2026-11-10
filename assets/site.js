@@ -126,7 +126,13 @@
       packets = [];
     }
 
-    var LINK = 150;
+    // Packet glow drawn once, then stamped each frame (cheaper than a gradient per packet).
+    var glow = doc.createElement('canvas'); glow.width = glow.height = 28;
+    var gx = glow.getContext('2d'), gg = gx.createRadialGradient(14, 14, 0, 14, 14, 14);
+    gg.addColorStop(0, 'rgba(34,211,238,.95)'); gg.addColorStop(1, 'rgba(34,211,238,0)');
+    gx.fillStyle = gg; gx.fillRect(0, 0, 28, 28);
+
+    var LINK = 150, ready = false;
     function frame(t) {
       raf = 0;
       var dt = Math.min(48, t - last || 16); last = t;
@@ -141,27 +147,33 @@
         }
       }
       ctx.lineWidth = 1;
+      // Bucket links by opacity so each bucket is one path and one stroke call.
+      var bk = [[], [], [], [], [], []], n;
       for (i = 0; i < nodes.length; i++) {
         a = nodes[i];
         for (j = i + 1; j < nodes.length; j++) {
           b = nodes[j]; dx = a.x - b.x; dy = a.y - b.y; d = dx * dx + dy * dy;
           if (d < LINK * LINK) {
             var o = 1 - Math.sqrt(d) / LINK;
-            ctx.strokeStyle = 'rgba(120,160,240,' + (o * 0.28).toFixed(3) + ')';
-            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            bk[Math.min(5, (o * 6) | 0)].push(a, b);
             if (!reduce && o > 0.45 && packets.length < 18 && Math.random() < 0.0016 * dt) {
               packets.push({ a: a, b: b, p: 0, s: 0.0006 + Math.random() * 0.0008 });
             }
           }
         }
       }
+      for (n = 0; n < 6; n++) {
+        if (!bk[n].length) continue;
+        ctx.strokeStyle = 'rgba(120,160,240,' + (((n + 0.5) / 6) * 0.28).toFixed(3) + ')';
+        ctx.beginPath();
+        for (j = 0; j < bk[n].length; j += 2) { ctx.moveTo(bk[n][j].x, bk[n][j].y); ctx.lineTo(bk[n][j + 1].x, bk[n][j + 1].y); }
+        ctx.stroke();
+      }
       for (i = packets.length - 1; i >= 0; i--) {
         var k = packets[i]; k.p += k.s * dt;
         if (k.p >= 1) { packets.splice(i, 1); continue; }
         var px = k.a.x + (k.b.x - k.a.x) * k.p, py = k.a.y + (k.b.y - k.a.y) * k.p;
-        var g = ctx.createRadialGradient(px, py, 0, px, py, 7);
-        g.addColorStop(0, 'rgba(34,211,238,.95)'); g.addColorStop(1, 'rgba(34,211,238,0)');
-        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, 7, 0, 6.283); ctx.fill();
+        ctx.drawImage(glow, px - 7, py - 7, 14, 14);
       }
       for (i = 0; i < nodes.length; i++) {
         a = nodes[i];
@@ -172,12 +184,15 @@
           ctx.beginPath(); ctx.arc(a.x, a.y, 7, 0, 6.283); ctx.stroke();
         }
       }
-      if (!reduce && visible && !doc.hidden) raf = requestAnimationFrame(frame);
+      if (ready && !reduce && visible && !doc.hidden) raf = requestAnimationFrame(frame);
     }
     function start() { if (!raf) raf = requestAnimationFrame(frame); }
 
     size();
-    start();
+    start(); // one still frame now; motion starts once the page has loaded
+    function go() { ready = true; start(); }
+    function idle() { if (window.requestIdleCallback) requestIdleCallback(go, { timeout: 1500 }); else setTimeout(go, 200); }
+    if (doc.readyState === 'complete') idle(); else window.addEventListener('load', idle);
     var rt;
     window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { size(); start(); }, 150); });
     if ('IntersectionObserver' in window) {
