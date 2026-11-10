@@ -1,15 +1,9 @@
 {
- "brand": {
-  "name": "Linqore"
- },
  "contact": {
   "wa": "923412010948",
   "phone": "+92 341 2010948",
   "email": "rahmat.uetm.edu@gmail.com",
-  "city": "Islamabad",
-  "address": "",
-  "hours": "",
-  "reply": ""
+  "city": "Islamabad"
  },
  "hero": {
   "eyebrow": "Embedded · IoT · Web · Mobile — Islamabad",
@@ -122,9 +116,6 @@
   "title": "Request a project",
   "sub": "Share your requirements and we will come back with a written scope, a realistic timeline and an itemised quotation. No obligation.",
   "budgetHint": "e.g. a rough range"
- },
- "show": {
-  "faq": true
  },
  "about": {
   "title": "About us",
@@ -354,7 +345,6 @@
    }
   ]
  },
- "footer": "Engineering & software · Islamabad",
  "legal": {
   "updated": "9 November 2026",
   "docs": [
