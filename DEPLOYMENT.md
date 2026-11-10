@@ -4,13 +4,12 @@ The code is complete. These are the switches only the account owner can flip.
 
 ## 1. GitHub Pages (free URL: https://123rahmat.github.io/NX/)
 1. Repo → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. **Settings → Environments → github-pages → Deployment branches**: allow `claude/sweet-wozniak-xg1vgp` (or `main` once merged).
+2. **Settings → Environments → github-pages → Deployment branches**: allow `claude/sweet-wozniak-xg1vgp`. It is the only branch and the default.
 3. **Actions** tab → "Deploy to GitHub Pages" → the latest run must be green. Re-run it with **Run workflow** if needed.
-4. Optional: merge the branch into `main` so `main` is the source of truth.
-5. Account security: **Settings (profile) → Password and authentication → enable 2FA**.
+4. Account security: **Settings (profile) → Password and authentication → enable 2FA**.
 
 ## 2. Cloudflare (Worker `nx`)
-1. dash.cloudflare.com → **Workers & Pages → nx → Settings → Build**: repo `123rahmat/NX`, branch `claude/sweet-wozniak-xg1vgp` (or `main`). Build command can stay empty; `wrangler.jsonc` runs `scripts/cf-build.sh`.
+1. dash.cloudflare.com → **Workers & Pages → nx → Settings → Build**: repo `123rahmat/NX`, branch `claude/sweet-wozniak-xg1vgp`. Build command can stay empty; `wrangler.jsonc` runs `scripts/cf-build.sh`.
 2. **Deployments** → the latest build must say *Success*. Site: `https://nx.<your-subdomain>.workers.dev`.
 3. When you own a domain: **nx → Settings → Domains & Routes → Add → Custom domain**, then run `python3 scripts/set_domain.py yourdomain.com`, rebuild, commit, push.
 4. Free email on that domain: **Domain → Email → Email Routing** → forward `hello@yourdomain.com` to your Gmail.
