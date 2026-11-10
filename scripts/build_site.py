@@ -307,9 +307,9 @@ pages = []
 H = A["hero"]
 pipe_icons = ["sim", "chip", "wifi", "db"]
 CYCLE = '''<figure class="cycle" aria-label="Our work cycle: simulation, embedded system, IoT connectivity, database and dashboards">
-<svg class="cy-ring" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="cyg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><circle class="trk" cx="200" cy="200" r="130"/><circle class="flw" cx="200" cy="200" r="130"/><circle class="in" cx="200" cy="200" r="84"/></svg>
+<svg class="cy-ring" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="cyg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><circle class="trk" cx="200" cy="200" r="130"/><circle class="flw" cx="200" cy="200" r="130"/><circle class="in" cx="200" cy="200" r="84"/><g class="arw" transform="translate(292 108) rotate(45)"><circle r="13"/><path d="M-6 0H6M1-5 6 0 1 5"/></g><g class="arw" transform="translate(292 292) rotate(135)"><circle r="13"/><path d="M-6 0H6M1-5 6 0 1 5"/></g><g class="arw" transform="translate(108 292) rotate(225)"><circle r="13"/><path d="M-6 0H6M1-5 6 0 1 5"/></g><g class="arw" transform="translate(108 108) rotate(315)"><circle r="13"/><path d="M-6 0H6M1-5 6 0 1 5"/></g></svg>
 <div class="cy-orbit" aria-hidden="true"><span></span></div>
-<div class="cy-hub"><span class="cy-logo">{LOGO}</span><b>Your product</b><small>One team &middot; one scope</small></div>
+<div class="cy-hub"><span class="cy-logo">{LOGO}</span></div>
 {STAGES}
 <figcaption class="sr">We simulate the system, build the embedded device, connect it through IoT and store its data in a database shown on live dashboards.</figcaption>
 </figure>
