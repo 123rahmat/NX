@@ -126,8 +126,6 @@ p{margin:0;text-wrap:pretty}
 .cy-orbit span{position:absolute;left:50%;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#22D3EE;box-shadow:0 0 0 6px rgba(34,211,238,.18),0 0 24px 6px rgba(34,211,238,.55)}
 .cy-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
 .cy-logo svg{display:block;width:52px;height:52px;filter:drop-shadow(0 8px 24px rgba(59,130,246,.5))}
-.cy-ring .arw circle{fill:#0F1C36;stroke:rgba(34,211,238,.45);stroke-width:1.5}
-.cy-ring .arw path{fill:none;stroke:#22D3EE;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .cy-st{position:absolute;z-index:2;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;width:max-content;max-width:35%;padding:11px 14px 11px 11px;border-radius:14px;background:rgba(15,28,54,.92);border:1px solid var(--line-d);box-shadow:0 12px 32px rgba(0,0,0,.35);animation:act 8s linear infinite}
 .cy-st.s1{left:50%;top:17.5%}.cy-st.s2{left:auto;right:0;top:50%;transform:translateY(-50%);animation-delay:2s}.cy-st.s3{left:50%;top:82.5%;animation-delay:4s}.cy-st.s4{left:0;top:50%;transform:translateY(-50%);animation-delay:6s}
 .cy-ic{flex:none;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:rgba(59,130,246,.16);color:#8FB4FF;transition:background .3s,color .3s}
