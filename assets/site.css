@@ -125,7 +125,7 @@ p{margin:0;text-wrap:pretty}
 .cy-orbit{position:absolute;inset:17.5%;border-radius:50%;animation:spin 8s linear infinite;z-index:1}
 .cy-orbit span{position:absolute;left:50%;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#22D3EE;box-shadow:0 0 0 6px rgba(34,211,238,.18),0 0 24px 6px rgba(34,211,238,.55)}
 .cy-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
-.cy-logo svg{display:block;width:76px;height:76px;filter:drop-shadow(0 8px 24px rgba(59,130,246,.5))}
+.cy-logo svg{display:block;width:52px;height:52px;filter:drop-shadow(0 8px 24px rgba(59,130,246,.5))}
 .cy-ring .arw circle{fill:#0F1C36;stroke:rgba(34,211,238,.45);stroke-width:1.5}
 .cy-ring .arw path{fill:none;stroke:#22D3EE;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .cy-st{position:absolute;z-index:2;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;width:max-content;max-width:35%;padding:11px 14px 11px 11px;border-radius:14px;background:rgba(15,28,54,.92);border:1px solid var(--line-d);box-shadow:0 12px 32px rgba(0,0,0,.35);animation:act 8s linear infinite}
@@ -136,8 +136,8 @@ p{margin:0;text-wrap:pretty}
 .cy-tx small{font:500 10.5px var(--mono);letter-spacing:.08em;color:#8FB4FF}
 .cy-tx b{color:#fff;font-size:15px;font-weight:600;line-height:1.2}
 .cy-tx em{font:normal 11.5px var(--mono);color:var(--muted-d);white-space:nowrap}
-@container (max-width:500px){.cy-st{padding:9px 12px 9px 9px;gap:9px}.cy-ic{width:34px;height:34px}.cy-ic svg{width:18px;height:18px}.cy-tx b{font-size:14px}.cy-tx em{display:none}.cy-logo svg{width:60px;height:60px}}
-@container (max-width:400px){.cy-st{padding:7px 9px 7px 7px;gap:7px;border-radius:11px;max-width:37%}.cy-ic{width:28px;height:28px;border-radius:8px}.cy-ic svg{width:15px;height:15px}.cy-tx small{font-size:9px}.cy-tx b{font-size:12.5px}.cy-logo svg{width:48px;height:48px}.cy-orbit span{width:11px;height:11px;margin:-5.5px 0 0 -5.5px}}
+@container (max-width:500px){.cy-st{padding:9px 12px 9px 9px;gap:9px}.cy-ic{width:34px;height:34px}.cy-ic svg{width:18px;height:18px}.cy-tx b{font-size:14px}.cy-tx em{display:none}.cy-logo svg{width:42px;height:42px}}
+@container (max-width:400px){.cy-st{padding:7px 9px 7px 7px;gap:7px;border-radius:11px;max-width:37%}.cy-ic{width:28px;height:28px;border-radius:8px}.cy-ic svg{width:15px;height:15px}.cy-tx small{font-size:9px}.cy-tx b{font-size:12.5px}.cy-logo svg{width:34px;height:34px}.cy-orbit span{width:11px;height:11px;margin:-5.5px 0 0 -5.5px}}
 @keyframes act{0%,20%{border-color:rgba(34,211,238,.75);box-shadow:0 0 0 4px rgba(34,211,238,.12),0 16px 40px rgba(0,0,0,.45)}28%,100%{border-color:var(--line-d);box-shadow:0 12px 32px rgba(0,0,0,.35)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
